@@ -14,6 +14,9 @@ namespace ConsoleApplication1
             string namn = Console.ReadLine();
 
             Console.WriteLine("Hej " + namn);
+            Console.ReadLine();
+
+          
         }
     }
 }
