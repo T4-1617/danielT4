@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txbFirst = new System.Windows.Forms.TextBox();
+            this.txbLast = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnHello = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txbFirst
             // 
-            this.textBox1.Location = new System.Drawing.Point(93, 62);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(192, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txbFirst.Location = new System.Drawing.Point(93, 62);
+            this.txbFirst.Name = "txbFirst";
+            this.txbFirst.Size = new System.Drawing.Size(192, 20);
+            this.txbFirst.TabIndex = 0;
+            this.txbFirst.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // txbLast
             // 
-            this.textBox2.Location = new System.Drawing.Point(93, 135);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(192, 20);
-            this.textBox2.TabIndex = 1;
+            this.txbLast.Location = new System.Drawing.Point(93, 135);
+            this.txbLast.Name = "txbLast";
+            this.txbLast.Size = new System.Drawing.Size(192, 20);
+            this.txbLast.TabIndex = 1;
             // 
             // label1
             // 
@@ -68,26 +68,27 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Last Name:";
             // 
-            // button1
+            // btnHello
             // 
-            this.button1.Location = new System.Drawing.Point(126, 189);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 50);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Hello";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnHello.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnHello.Location = new System.Drawing.Point(126, 189);
+            this.btnHello.Name = "btnHello";
+            this.btnHello.Size = new System.Drawing.Size(118, 50);
+            this.btnHello.TabIndex = 4;
+            this.btnHello.Text = "Hello";
+            this.btnHello.UseVisualStyleBackColor = false;
+            this.btnHello.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(390, 373);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnHello);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txbLast);
+            this.Controls.Add(this.txbFirst);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -97,11 +98,11 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txbFirst;
+        private System.Windows.Forms.TextBox txbLast;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnHello;
     }
 }
 

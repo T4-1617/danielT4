@@ -24,9 +24,9 @@ namespace GitUppgift2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string FirstName = textBox1.Text;
-            string LastName = textBox2.Text;
-            MessageBox.Show("Hello " + FirstName + " " + LastName);
+            string FirstName = txbFirst.Text;
+            string LastName = txbLast.Text;
+            MessageBox.Show("Hello " + FirstName + " " + LastName, "Hello!");
         }
     }
 }
