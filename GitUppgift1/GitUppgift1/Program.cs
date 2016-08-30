@@ -16,7 +16,7 @@ namespace GitUppgift1
             Console.WriteLine("Vad heter du i efternamn?");
             string LastName = Console.ReadLine();
 
-            Console.WriteLine("Hej " + FirstName + " " + LastName);
+            Console.WriteLine("Hej " + LastName);
         }
     }
 }
