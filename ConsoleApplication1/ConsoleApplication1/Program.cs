@@ -10,7 +10,10 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Test");
+            Console.WriteLine("Vad heter du?");
+            string namn = Console.ReadLine();
+
+            Console.WriteLine("Hej " + namn);
         }
     }
 }
