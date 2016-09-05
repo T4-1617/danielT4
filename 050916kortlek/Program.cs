@@ -10,7 +10,7 @@ namespace _050916kortlek
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("test");
+            Console.WriteLine("test.");
         }
     }
 }
