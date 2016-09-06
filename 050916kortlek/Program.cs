@@ -14,13 +14,14 @@ namespace _050916kortlek
 
             Random rnd = new Random();//Random number generator
 
-            //Creates ints for random card suits, random card ranks and a card counter
+            //Creates ints for random card suits, random card ranks, a card counter and a point counter
             int randomSuit;
             int randomRank;
-            int cards = 52;
+            int cards = 1;
+            int points = 0;
 
             //loop that stops when there are no cards left in the card deck
-            while (cards > 0) {
+            while (cards <= 52) {
 
             //Gathers two random numbers from 0 to 4 and 0 to 13
             randomSuit = rnd.Next(0, 4);
@@ -30,20 +31,21 @@ namespace _050916kortlek
                 {
                     Console.WriteLine("Tryck Enter för att ta ett kort!");
                     Console.ReadLine();
+                    Console.Write("Ditt kort nummer " + cards);
 
                     switch (randomSuit)//Prints the suit that is picked by the Random Number Generator
                     {
                         case 0:
-                            Console.Write("Du drog hjärter ");
+                            Console.Write(" är hjärter ");
                             break;
                         case 1:
-                            Console.Write("Du drog ruter ");
+                            Console.Write(" är ruter ");
                             break;
                         case 2:
-                            Console.Write("Du drog klöver ");
+                            Console.Write(" är klöver ");
                             break;
                         case 3:
-                            Console.Write("Du drog spader ");
+                            Console.Write(" är spader ");
                             break;
                         default:
                             Console.WriteLine(string.Empty);
@@ -53,24 +55,26 @@ namespace _050916kortlek
                     switch (randomRank)//Prints the card rank that is picked by the Random Number Generator
                     {
                         case 0:
-                            Console.WriteLine("ess!");
+                            Console.Write("ess");
+                            break;
+                        case 10:
+                            Console.Write("knekt");
                             break;
                         case 11:
-                            Console.WriteLine("knekt!");
+                            Console.Write("dam");
                             break;
                         case 12:
-                            Console.WriteLine("dam!");
-                            break;
-                        case 13:
-                            Console.WriteLine("kung!");
+                            Console.Write("kung");
                             break;
                         default:
-                            Console.WriteLine(randomRank);
+                            Console.Write(randomRank+1);
                             break;
                     }
+                        points += randomRank+1;
+                        Console.WriteLine(" och du har " + points + " poäng!");
                         cardDeck[randomSuit, randomRank] = true;//Changes the value of the used card from false to true
-                        cards--;//subtracts 1 from the card counter
-                        Console.WriteLine("Det finns " + cards + " kort kvar i kortleken.");//Prints the remaining cards in the card deck
+                        cards++;//Adds 1 to the card counter
+                        Console.WriteLine("Det finns " + (53-cards) + " kort kvar i kortleken.");//Prints the remaining cards in the card deck
                 }
                 
             
