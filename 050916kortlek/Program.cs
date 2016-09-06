@@ -10,25 +10,28 @@ namespace _050916kortlek
     {
         static void Main(string[] args)
         {
-            bool[,] cardDeck = new bool[4, 13];
+            bool[,] cardDeck = new bool[4, 13];//Creates a 2-dimensional array with false bools
 
-            Random rnd = new Random();
+            Random rnd = new Random();//Random number generator
+
+            //Creates ints for random card suits, random card ranks and a card counter
             int randomSuit;
             int randomRank;
             int cards = 52;
 
+            //loop that stops when there are no cards left in the card deck
             while (cards > 0) {
 
-            
+            //Gathers two random numbers from 0 to 4 and 0 to 13
             randomSuit = rnd.Next(0, 4);
             randomRank = rnd.Next(0, 13);
 
-                if (cardDeck[randomSuit, randomRank] == false)
+                if (cardDeck[randomSuit, randomRank] == false)//Enters if the card is unused/false
                 {
                     Console.WriteLine("Tryck Enter för att ta ett kort!");
                     Console.ReadLine();
 
-                    switch (randomSuit)
+                    switch (randomSuit)//Prints the suit that is picked by the Random Number Generator
                     {
                         case 0:
                             Console.Write("Du drog hjärter ");
@@ -47,7 +50,8 @@ namespace _050916kortlek
                             break;
                     }
 
-                    switch (randomRank) {
+                    switch (randomRank)//Prints the card rank that is picked by the Random Number Generator
+                    {
                         case 0:
                             Console.WriteLine("ess!");
                             break;
@@ -61,15 +65,12 @@ namespace _050916kortlek
                             Console.WriteLine("kung!");
                             break;
                         default:
-                            Console.WriteLine(randomRank + '!');
+                            Console.WriteLine(randomRank);
                             break;
-
-                        cardDeck[randomSuit, randomRank] = true;
-                        
                     }
-                        
-                        cards--;
-                        Console.WriteLine("Det finns " + cards + " kort kvar i kortleken.");
+                        cardDeck[randomSuit, randomRank] = true;//Changes the value of the used card from false to true
+                        cards--;//subtracts 1 from the card counter
+                        Console.WriteLine("Det finns " + cards + " kort kvar i kortleken.");//Prints the remaining cards in the card deck
                 }
                 
             
