@@ -19,9 +19,9 @@ namespace _070916blackjack
             int randomRank;
             int points = 0;
             int cards = 104;
-            bool gameStatus = true;
+            char gameStatus = 'j';
 
-            while (gameStatus == true)
+            while (gameStatus == 'j')
             {
                 while (switcher == 'j')
                 {
@@ -87,7 +87,7 @@ namespace _070916blackjack
                         if (cards == 0)
                             {
                             Console.WriteLine("\nSlut på kort! Starta om programmet om du vill köra igen.");
-                            gameStatus = false;
+                            gameStatus = 'n';
                             }
 
                         else
@@ -96,9 +96,6 @@ namespace _070916blackjack
                             switcher = Console.ReadKey().KeyChar;
                             }
                         
-
-                        
-
                     }
                 }
 
@@ -118,9 +115,17 @@ namespace _070916blackjack
                     {
                         Console.WriteLine("\n\nDu fick {0} poäng\n\nVill du köra igen? (J/N): ", points);
                     }
+
                     switcher = Console.ReadKey().KeyChar;
+                     if (switcher == 'n')
+                    {
+                        gameStatus = 'n';
+                        switcher = ' ';
+                    }
                     points = 0;
                 }
+
+               
             }
             
         }
