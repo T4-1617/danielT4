@@ -64,19 +64,31 @@ namespace _070916blackjack
                         switch (randomRank)
                         {
                             case 0:
+                                if(points < 11)
+                                {
                                 Console.WriteLine("ess");
+                                points += 10;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("ess");
+                                }
+                                
                                 break;
                             case 10:
                                 Console.WriteLine("knekt");
+                                points--;
                                 break;
                             case 11:
                                 Console.WriteLine("dam");
+                                points -= 2;
                                 break;
                             case 12:
                                 Console.WriteLine("kung");
+                                points -= 3;
                                 break;
                             default:
-                                Console.WriteLine(randomRank);
+                                Console.WriteLine(randomRank+1);
                                 break;
                         }
                         cards--;
@@ -113,7 +125,7 @@ namespace _070916blackjack
 
                     else
                     {
-                        Console.WriteLine("\n\nDu fick {0} poäng\n\nVill du köra igen? (J/N): ", points);
+                        Console.Write("\n\nDu fick {0} poäng\n\nVill du köra igen? (J/N): ", points);
                     }
 
                     switcher = Console.ReadKey().KeyChar;
