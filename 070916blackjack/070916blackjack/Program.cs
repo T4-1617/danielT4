@@ -18,6 +18,7 @@ namespace _070916blackjack
             int randomSuit;
             int randomRank;
             int points = 0;
+            int cards = 104;
             bool gameStatus = true;
 
             while (gameStatus == true)
@@ -78,11 +79,26 @@ namespace _070916blackjack
                                 Console.WriteLine(randomRank);
                                 break;
                         }
+                        cards--;
                         points += (randomRank + 1);
                         Console.WriteLine("Du har {0} poäng", points);
                         shoe[randomSuit, randomRank] = true;
-                        Console.Write("\nVill du dra ett kort? (J/N): ");
-                        switcher = Console.ReadKey().KeyChar;
+
+                        if (cards == 0)
+                            {
+                            Console.WriteLine("\nSlut på kort! Starta om programmet om du vill köra igen.");
+                            gameStatus = false;
+                            }
+
+                        else
+                            {
+                            Console.Write("\nVill du dra ett kort? (J/N): ");
+                            switcher = Console.ReadKey().KeyChar;
+                            }
+                        
+
+                        
+
                     }
                 }
 
@@ -90,13 +106,23 @@ namespace _070916blackjack
                 {
                     if(points == 21)
                     {
-                        Console.WriteLine("Du fick {0}\nVill du köra igen?", points);
-                    switcher = Console.ReadKey().KeyChar;
-
+                        Console.WriteLine("\n\nGrattis du vann!\n\nVill du köra igen?(J/N): ", points);
                     }
-                        
+
+                    else if(points > 21)
+                    {
+                        Console.WriteLine("\n\nDu fick {0} poäng och förlorade, bättre lycka nästa gång.\n\nVill du köra igen?(J/N) ", points); 
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("\n\nDu fick {0} poäng\n\nVill du köra igen? (J/N): ", points);
+                    }
+                    switcher = Console.ReadKey().KeyChar;
+                    points = 0;
                 }
             }
+            
         }
     }
 }
