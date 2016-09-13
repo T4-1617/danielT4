@@ -8,9 +8,11 @@ namespace _160912CRM
 {
     public class Customer
     {
+        public int CustomerID;
         public string FirstName;
         public string LastName;
-        public int CustomerID;
+        public bool Status;
+
 
         public string FullName()
         {

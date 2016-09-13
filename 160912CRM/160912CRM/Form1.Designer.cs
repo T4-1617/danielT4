@@ -36,6 +36,7 @@
             this.lblList = new System.Windows.Forms.Label();
             this.lbxList = new System.Windows.Forms.ListBox();
             this.lblCustomerCounter = new System.Windows.Forms.Label();
+            this.cbxStatus = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lblFirstName
@@ -96,21 +97,34 @@
             this.lbxList.Name = "lbxList";
             this.lbxList.Size = new System.Drawing.Size(257, 95);
             this.lbxList.TabIndex = 6;
+            this.lbxList.SelectedIndexChanged += new System.EventHandler(this.lbxList_SelectedIndexChanged);
             // 
             // lblCustomerCounter
             // 
             this.lblCustomerCounter.AutoSize = true;
             this.lblCustomerCounter.Location = new System.Drawing.Point(12, 239);
             this.lblCustomerCounter.Name = "lblCustomerCounter";
-            this.lblCustomerCounter.Size = new System.Drawing.Size(97, 13);
+            this.lblCustomerCounter.Size = new System.Drawing.Size(10, 13);
             this.lblCustomerCounter.TabIndex = 7;
-            this.lblCustomerCounter.Text = "Du har x st kunder.";
+            this.lblCustomerCounter.Text = " ";
+            // 
+            // cbxStatus
+            // 
+            this.cbxStatus.AutoSize = true;
+            this.cbxStatus.Location = new System.Drawing.Point(182, 75);
+            this.cbxStatus.Name = "cbxStatus";
+            this.cbxStatus.Size = new System.Drawing.Size(56, 17);
+            this.cbxStatus.TabIndex = 8;
+            this.cbxStatus.Text = "Active";
+            this.cbxStatus.UseVisualStyleBackColor = true;
+            this.cbxStatus.CheckedChanged += new System.EventHandler(this.cbxStatus_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.cbxStatus);
             this.Controls.Add(this.lblCustomerCounter);
             this.Controls.Add(this.lbxList);
             this.Controls.Add(this.lblList);
@@ -136,6 +150,7 @@
         private System.Windows.Forms.Label lblList;
         private System.Windows.Forms.ListBox lbxList;
         private System.Windows.Forms.Label lblCustomerCounter;
+        private System.Windows.Forms.CheckBox cbxStatus;
     }
 }
 
