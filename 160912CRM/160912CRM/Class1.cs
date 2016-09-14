@@ -12,6 +12,7 @@ namespace _160912CRM
         public string FirstName;
         public string LastName;
         public bool Status;
+        public string StatusString;
 
 
         public string FullName()

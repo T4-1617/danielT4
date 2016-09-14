@@ -30,6 +30,15 @@ namespace _160912CRM
             c.LastName = txbLastName.Text;
             c.CustomerID = ID;
             c.Status = cbxStatus.Checked;
+            c.StatusString = c.Status.ToString();
+            if(c.Status == true)
+            {
+                c.StatusString = "Aktiv";
+            }
+            else
+            {
+                c.StatusString = "Inaktiv";
+            }
             ID++;
             MyCustomers.Add(c);
             lblCustomerCounter.Text = string.Format("Du har {0} kunder.", MyCustomers.Count);
@@ -47,7 +56,7 @@ namespace _160912CRM
         {
             Customer c = MyCustomers[lbxList.SelectedIndex];
 
-            MessageBox.Show(string.Format("ID: {0}\nFirst name: {1}\nLast name: {2}\nStatus: {3}", c.CustomerID, c.FirstName, c.LastName, c.Status));
+            MessageBox.Show(string.Format("ID: {0}\nFirst name: {1}\nLast name: {2}\nStatus: {3}", c.CustomerID, c.FirstName, c.LastName, c.StatusString));
         }
 
         private void cbxStatus_CheckedChanged(object sender, EventArgs e)
