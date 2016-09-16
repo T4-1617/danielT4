@@ -12,6 +12,8 @@ namespace _160916CarRental
         public string Model { get; set; }
         public string Colour { get; set; }
         public bool Rented { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
         public override string ToString()
         {

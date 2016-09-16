@@ -71,6 +71,7 @@ namespace _160916CarRental
                 if (item.Rented)
                 {
                     lbxReturnCar.Items.Add(item);
+                    lbxCurrentlyRenting.Items.Add(item.FirstName);
                 }
 
             }
@@ -93,8 +94,14 @@ namespace _160916CarRental
             btnBook.Visible = false;//Hides the "Book" button.
             Car x = (Car)lbxShowCars.SelectedItem;//Creates a variable based on the item selected.
             x.Rented = true;//Sets "Rented" value to true.
+            x.FirstName = txbFirstName.Text;
+            x.LastName = txbLastName.Text;
             lbxShowCars.Items.Clear();//Clears the list.
-
+            if (txbFirstName.Text == string.Empty || txbLastName.Text == string.Empty)
+            {
+                MessageBox.Show("You have to enter both First name and Last name");
+            }
+           
             foreach (Car item in Cars)//Prints each car available to be rented.
             {
                 if (!item.Rented)
@@ -112,13 +119,19 @@ namespace _160916CarRental
             btnReturn.Visible = false;//Hides the "Return" button.
             Car x = (Car)lbxReturnCar.SelectedItem;//Creates a variable based on the item selected.
             x.Rented = false;//Sets "Rented" value to false.
-            lbxReturnCar.Items.Clear();//Clears the list.
+            x.FirstName = string.Empty;
+            x.LastName = string.Empty;
+            
+            //Clears the lists.
+            lbxReturnCar.Items.Clear();
+            lbxCurrentlyRenting.Items.Clear();
 
             foreach (Car item in Cars)//Prints each car already rented.
             {
                 if (item.Rented)
                 {
                     lbxReturnCar.Items.Add(item);
+                    lbxCurrentlyRenting.Items.Add(item.FirstName);
                 }
 
             }
@@ -126,10 +139,7 @@ namespace _160916CarRental
 
         private void lbxShowCars_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            
-            btnBook.Visible = true;//Makes button "Book" visible.
-            
+                btnBook.Visible = true;//Makes button "Book" visible.
         }
 
         private void lbxReturnCar_SelectedIndexChanged(object sender, EventArgs e)
