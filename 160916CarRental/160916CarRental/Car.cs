@@ -15,9 +15,14 @@ namespace _160916CarRental
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
+        public string FullName()
+        {
+            return string.Format("{0} {1}", FirstName, LastName);
+        }
+
         public override string ToString()
         {
-            return string.Format("{0} {1}", Make, Model);
+            return string.Format("{0} {1} ({2})", Make, Model, Colour);
         }
     }
 }

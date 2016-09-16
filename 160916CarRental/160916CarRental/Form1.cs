@@ -75,7 +75,7 @@ namespace _160916CarRental
                 if (item.Rented)
                 {
                     lbxReturnCar.Items.Add(item);
-                    lbxCurrentlyRenting.Items.Add(item.FirstName);
+                    lbxCurrentlyRenting.Items.Add(item.FullName());
                 }
 
             }
@@ -150,13 +150,23 @@ namespace _160916CarRental
 
         private void lbxShowCars_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            btnBook.Visible = true;//Makes button "Book" visible.
+            //Makes button "Book" visible if a car is selected.
+            if (lbxShowCars.SelectedIndex >= 0)
+            {
+                btnBook.Visible = true;
+            }
+            
+            
         }
 
         private void lbxReturnCar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            btnReturn.Visible = true;//Makes button "Return" visible.
+            //Makes button "Return" visible if a car is selected.
+            if (lbxReturnCar.SelectedIndex >= 0)
+            {
+                btnReturn.Visible = true;
+            }
+           
         }
     }
 }
