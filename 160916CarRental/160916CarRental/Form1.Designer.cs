@@ -36,7 +36,7 @@
             this.pnlAddCar = new System.Windows.Forms.Panel();
             this.pnlReturnCar = new System.Windows.Forms.Panel();
             this.lbxShowCars = new System.Windows.Forms.ListBox();
-            this.lbsReturnCar = new System.Windows.Forms.ListBox();
+            this.lbxReturnCar = new System.Windows.Forms.ListBox();
             this.btnBook = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
@@ -54,11 +54,11 @@
             // lblCarCounter
             // 
             this.lblCarCounter.AutoSize = true;
-            this.lblCarCounter.Location = new System.Drawing.Point(12, 9);
+            this.lblCarCounter.Location = new System.Drawing.Point(3, 109);
             this.lblCarCounter.Name = "lblCarCounter";
-            this.lblCarCounter.Size = new System.Drawing.Size(85, 13);
+            this.lblCarCounter.Size = new System.Drawing.Size(10, 13);
             this.lblCarCounter.TabIndex = 0;
-            this.lblCarCounter.Text = "We have x cars.";
+            this.lblCarCounter.Text = " ";
             // 
             // btnShowCars
             // 
@@ -94,6 +94,7 @@
             // 
             this.pnlShowCars.Controls.Add(this.btnBook);
             this.pnlShowCars.Controls.Add(this.lbxShowCars);
+            this.pnlShowCars.Controls.Add(this.lblCarCounter);
             this.pnlShowCars.Location = new System.Drawing.Point(15, 75);
             this.pnlShowCars.Name = "pnlShowCars";
             this.pnlShowCars.Size = new System.Drawing.Size(213, 168);
@@ -118,7 +119,7 @@
             // pnlReturnCar
             // 
             this.pnlReturnCar.Controls.Add(this.btnReturn);
-            this.pnlReturnCar.Controls.Add(this.lbsReturnCar);
+            this.pnlReturnCar.Controls.Add(this.lbxReturnCar);
             this.pnlReturnCar.Location = new System.Drawing.Point(453, 75);
             this.pnlReturnCar.Name = "pnlReturnCar";
             this.pnlReturnCar.Size = new System.Drawing.Size(213, 168);
@@ -134,13 +135,14 @@
             this.lbxShowCars.TabIndex = 0;
             this.lbxShowCars.SelectedIndexChanged += new System.EventHandler(this.lbxShowCars_SelectedIndexChanged);
             // 
-            // lbsReturnCar
+            // lbxReturnCar
             // 
-            this.lbsReturnCar.FormattingEnabled = true;
-            this.lbsReturnCar.Location = new System.Drawing.Point(3, 3);
-            this.lbsReturnCar.Name = "lbsReturnCar";
-            this.lbsReturnCar.Size = new System.Drawing.Size(207, 95);
-            this.lbsReturnCar.TabIndex = 1;
+            this.lbxReturnCar.FormattingEnabled = true;
+            this.lbxReturnCar.Location = new System.Drawing.Point(3, 3);
+            this.lbxReturnCar.Name = "lbxReturnCar";
+            this.lbxReturnCar.Size = new System.Drawing.Size(207, 95);
+            this.lbxReturnCar.TabIndex = 1;
+            this.lbxReturnCar.SelectedIndexChanged += new System.EventHandler(this.lbxReturnCar_SelectedIndexChanged);
             // 
             // btnBook
             // 
@@ -232,15 +234,14 @@
             this.Controls.Add(this.btnReturnCar);
             this.Controls.Add(this.btnAddCar);
             this.Controls.Add(this.btnShowCars);
-            this.Controls.Add(this.lblCarCounter);
             this.Name = "Form1";
             this.Text = "Form1";
             this.pnlShowCars.ResumeLayout(false);
+            this.pnlShowCars.PerformLayout();
             this.pnlAddCar.ResumeLayout(false);
             this.pnlAddCar.PerformLayout();
             this.pnlReturnCar.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -263,7 +264,7 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Panel pnlReturnCar;
         private System.Windows.Forms.Button btnReturn;
-        private System.Windows.Forms.ListBox lbsReturnCar;
+        private System.Windows.Forms.ListBox lbxReturnCar;
     }
 }
 

@@ -13,6 +13,7 @@ namespace _160916CarRental
     public partial class Form1 : Form
     {
         System.Collections.ArrayList Cars;
+        int CarsAvailable;
         public Form1()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace _160916CarRental
 
         private void btnShowCars_Click(object sender, EventArgs e)
         {
+            CarsAvailable = 0;
             btnBook.Visible = false;
             pnlShowCars.Visible = true;
             pnlAddCar.Visible = false;
@@ -36,9 +38,11 @@ namespace _160916CarRental
                 if (!item.Rented)
                 {
                     lbxShowCars.Items.Add(item);
+                    CarsAvailable++;
                 }
                 
             }
+            lblCarCounter.Text = String.Format("We have {0} car(s) available", CarsAvailable);
         }
 
         private void btnAddCar_Click(object sender, EventArgs e)
@@ -53,6 +57,17 @@ namespace _160916CarRental
             pnlShowCars.Visible = false;
             pnlAddCar.Visible = false;
             pnlReturnCar.Visible = true;
+
+            lbxReturnCar.Items.Clear();
+
+            foreach (Car item in Cars)
+            {
+                if (item.Rented)
+                {
+                    lbxReturnCar.Items.Add(item);
+                }
+
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -66,6 +81,7 @@ namespace _160916CarRental
 
         private void btnBook_Click(object sender, EventArgs e)
         {
+            CarsAvailable--;
             btnBook.Visible = false;
             Car x = (Car)lbxShowCars.SelectedItem;
             x.Rented = true;
@@ -79,11 +95,25 @@ namespace _160916CarRental
                 }
 
             }
+            lblCarCounter.Text = String.Format("We have {0} car(s) available", CarsAvailable);
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
+            CarsAvailable++;
+            btnReturn.Visible = false;
+            Car x = (Car)lbxReturnCar.SelectedItem;
+            x.Rented = false;
+            lbxReturnCar.Items.Clear();
 
+            foreach (Car item in Cars)
+            {
+                if (item.Rented)
+                {
+                    lbxReturnCar.Items.Add(item);
+                }
+
+            }
         }
 
         private void lbxShowCars_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,6 +122,11 @@ namespace _160916CarRental
             
             btnBook.Visible = true;
             
+        }
+
+        private void lbxReturnCar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnReturn.Visible = true;
         }
     }
 }
