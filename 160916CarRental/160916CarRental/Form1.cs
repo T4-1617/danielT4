@@ -46,7 +46,7 @@ namespace _160916CarRental
                 }
                 
             }
-            lblCarCounter.Text = String.Format("We have {0} car(s) available", CarsAvailable);//Prints the amount of cars available.
+            lblCarCounter.Text = String.Format("There are {0} car(s) available", CarsAvailable);//Prints the amount of cars available.
         }
 
         private void btnAddCar_Click(object sender, EventArgs e)
@@ -64,7 +64,11 @@ namespace _160916CarRental
             pnlAddCar.Visible = false;
             pnlReturnCar.Visible = true;
 
-            lbxReturnCar.Items.Clear();//Clears the list.
+            btnReturn.Visible = false;
+            
+            //Clears the lists.
+            lbxReturnCar.Items.Clear();
+            lbxCurrentlyRenting.Items.Clear();
 
             foreach (Car item in Cars)//Prints all the cars already rented.
             {
@@ -81,6 +85,7 @@ namespace _160916CarRental
         {
             //Adds a "Car" to "Cars" with property values given by the user.
             Cars.Add(new Car { Make = txbMake.Text, Model = txbModel.Text, Colour = txbColour.Text, Rented = false });
+            
             //Empties the textboxes and focuses the first one for easier use.
             txbMake.Text = String.Empty;
             txbModel.Text = String.Empty;
@@ -90,27 +95,33 @@ namespace _160916CarRental
 
         private void btnBook_Click(object sender, EventArgs e)
         {
-            CarsAvailable--;//Subtracts 1 from the car counter.
-            btnBook.Visible = false;//Hides the "Book" button.
-            Car x = (Car)lbxShowCars.SelectedItem;//Creates a variable based on the item selected.
-            x.Rented = true;//Sets "Rented" value to true.
-            x.FirstName = txbFirstName.Text;
-            x.LastName = txbLastName.Text;
-            lbxShowCars.Items.Clear();//Clears the list.
-            if (txbFirstName.Text == string.Empty || txbLastName.Text == string.Empty)
+            if (txbFirstName.Text != string.Empty && txbLastName.Text != string.Empty)
+            {
+                CarsAvailable--;//Subtracts 1 from the car counter.
+                btnBook.Visible = false;//Hides the "Book" button.
+                Car x = (Car)lbxShowCars.SelectedItem;//Creates a variable based on the item selected.
+                x.Rented = true;//Sets "Rented" value to true.
+                x.FirstName = txbFirstName.Text;
+                x.LastName = txbLastName.Text;
+                lbxShowCars.Items.Clear();//Clears the list.
+            
+                foreach (Car item in Cars)//Prints each car available to be rented.
+                {
+                    if (!item.Rented)
+                    {
+                        lbxShowCars.Items.Add(item);
+                    }
+
+                }
+            }
+
+           else//If a textbox for the names is left empty while trying to rent this will be displayed.
             {
                 MessageBox.Show("You have to enter both First name and Last name");
             }
-           
-            foreach (Car item in Cars)//Prints each car available to be rented.
-            {
-                if (!item.Rented)
-                {
-                    lbxShowCars.Items.Add(item);
-                }
 
-            }
-            lblCarCounter.Text = String.Format("We have {0} car(s) available", CarsAvailable);
+            //Changes the label to display the amount of cars available to rent.
+            lblCarCounter.Text = String.Format("There are {0} car(s) available", CarsAvailable);
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -139,7 +150,8 @@ namespace _160916CarRental
 
         private void lbxShowCars_SelectedIndexChanged(object sender, EventArgs e)
         {
-                btnBook.Visible = true;//Makes button "Book" visible.
+
+            btnBook.Visible = true;//Makes button "Book" visible.
         }
 
         private void lbxReturnCar_SelectedIndexChanged(object sender, EventArgs e)
