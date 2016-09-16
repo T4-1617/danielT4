@@ -13,13 +13,9 @@ namespace _160916CarRental
         public string Colour { get; set; }
         public bool Rented { get; set; }
 
-        public string MakeAndModel
+        public override string ToString()
         {
-            get
-            {
-                return string.Format("{0} {1}", Make, Model);
-            }
-
+            return string.Format("{0} {1}", Make, Model);
         }
     }
 }

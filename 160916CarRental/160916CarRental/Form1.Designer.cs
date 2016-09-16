@@ -132,6 +132,7 @@
             this.lbxShowCars.Name = "lbxShowCars";
             this.lbxShowCars.Size = new System.Drawing.Size(207, 95);
             this.lbxShowCars.TabIndex = 0;
+            this.lbxShowCars.SelectedIndexChanged += new System.EventHandler(this.lbxShowCars_SelectedIndexChanged);
             // 
             // lbsReturnCar
             // 
@@ -149,6 +150,8 @@
             this.btnBook.TabIndex = 1;
             this.btnBook.Text = "Book";
             this.btnBook.UseVisualStyleBackColor = true;
+            this.btnBook.Visible = false;
+            this.btnBook.Click += new System.EventHandler(this.btnBook_Click);
             // 
             // btnAdd
             // 
@@ -168,6 +171,7 @@
             this.btnReturn.TabIndex = 3;
             this.btnReturn.Text = "Return";
             this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // txbMake
             // 

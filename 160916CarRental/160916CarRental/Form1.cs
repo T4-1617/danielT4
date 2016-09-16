@@ -24,6 +24,7 @@ namespace _160916CarRental
 
         private void btnShowCars_Click(object sender, EventArgs e)
         {
+            btnBook.Visible = false;
             pnlShowCars.Visible = true;
             pnlAddCar.Visible = false;
             pnlReturnCar.Visible = false;
@@ -35,7 +36,6 @@ namespace _160916CarRental
                 if (!item.Rented)
                 {
                     lbxShowCars.Items.Add(item);
-                    lbxShowCars.DisplayMember = "MakeAndModel";
                 }
                 
             }
@@ -58,6 +58,40 @@ namespace _160916CarRental
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Cars.Add(new Car { Make = txbMake.Text, Model = txbModel.Text, Colour = txbColour.Text, Rented = false });
+            txbMake.Text = String.Empty;
+            txbModel.Text = String.Empty;
+            txbColour.Text = String.Empty;
+            txbMake.Focus();
+        }
+
+        private void btnBook_Click(object sender, EventArgs e)
+        {
+            btnBook.Visible = false;
+            Car x = (Car)lbxShowCars.SelectedItem;
+            x.Rented = true;
+            lbxShowCars.Items.Clear();
+
+            foreach (Car item in Cars)
+            {
+                if (!item.Rented)
+                {
+                    lbxShowCars.Items.Add(item);
+                }
+
+            }
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbxShowCars_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            
+            btnBook.Visible = true;
+            
         }
     }
 }
