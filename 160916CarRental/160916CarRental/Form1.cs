@@ -17,6 +17,7 @@ namespace _160916CarRental
         public Form1()
         {
             InitializeComponent();
+            lbxReturnCar.MouseDoubleClick += new MouseEventHandler(lbxReturnCar_MouseDoubleClick);
             Cars = new System.Collections.ArrayList();
             //Adds the three pre-existing cars to the ArrayList
             Cars.Add(new Car { Make = "Volvo", Model = "V70", Colour = "Red", Rented = false});
@@ -28,7 +29,7 @@ namespace _160916CarRental
         {
             CarsAvailable = 0;//Resets the car counter to zero
 
-            btnBook.Visible = false;//Hides the "Book" button.
+            btnBook.Enabled = false;//Hides the "Book" button.
 
             //Makes sure only the selected panel is shown
             pnlShowCars.Visible = true;
@@ -98,11 +99,15 @@ namespace _160916CarRental
             if (txbFirstName.Text != string.Empty && txbLastName.Text != string.Empty)
             {
                 CarsAvailable--;//Subtracts 1 from the car counter.
-                btnBook.Visible = false;//Hides the "Book" button.
+                btnBook.Enabled = false;//Hides the "Book" button.
                 Car x = (Car)lbxShowCars.SelectedItem;//Creates a variable based on the item selected.
                 x.Rented = true;//Sets "Rented" value to true.
                 x.FirstName = txbFirstName.Text;
                 x.LastName = txbLastName.Text;
+                x.Email = txbEmail.Text;
+                x.PhoneNum = txbPhoneNum.Text;
+                x.Address1 = txbAddress1.Text;
+                x.Address2 = txbAddress2.Text;
                 lbxShowCars.Items.Clear();//Clears the list.
             
                 foreach (Car item in Cars)//Prints each car available to be rented.
@@ -132,6 +137,10 @@ namespace _160916CarRental
             x.Rented = false;//Sets "Rented" value to false.
             x.FirstName = string.Empty;
             x.LastName = string.Empty;
+            x.Email = string.Empty;
+            x.PhoneNum = string.Empty;
+            x.Address1 = string.Empty;
+            x.Address2 = string.Empty;
             
             //Clears the lists.
             lbxReturnCar.Items.Clear();
@@ -153,7 +162,7 @@ namespace _160916CarRental
             //Makes button "Book" visible if a car is selected.
             if (lbxShowCars.SelectedIndex >= 0)
             {
-                btnBook.Visible = true;
+                btnBook.Enabled = true;
             }
             
             
@@ -167,6 +176,34 @@ namespace _160916CarRental
                 btnReturn.Visible = true;
             }
            
+        }
+
+        private void lbxReturnCar_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Car x = (Car)lbxReturnCar.SelectedItem;
+            if (lbxReturnCar.SelectedItem != null)
+
+            {
+                MessageBox.Show(x.MoreInfo());
+            }
+        }
+
+
+        private void btnMore_Click(object sender, EventArgs e)
+        {
+            pnlMore.Visible = true;
+            btnLess.Visible = true;
+            btnMore.Visible = false;
+            btnBook.Top += 122;
+
+        }
+
+        private void btnLess_Click(object sender, EventArgs e)
+        {
+            btnMore.Visible = true;
+            btnLess.Visible = false;
+            pnlMore.Visible = false;
+            btnBook.Top -= 122;
         }
     }
 }

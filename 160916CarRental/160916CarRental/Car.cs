@@ -14,6 +14,15 @@ namespace _160916CarRental
         public bool Rented { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Email { get; set; }
+        public string PhoneNum { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+
+        public string MoreInfo()
+        {
+            return string.Format("Name: {0} {1}\nEmail: {2}\nPhone Number: {3}\nAddress 1: {4}\nAddress 2: {5}", FirstName, LastName, Email, PhoneNum, Address1, Address2);
+        }
 
         public string FullName()
         {
