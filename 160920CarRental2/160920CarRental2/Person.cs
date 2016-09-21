@@ -19,6 +19,11 @@ namespace _160920CarRental2
                 return string.Format("{0} {1}", FirstName, LastName);
             }
         }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1}", FirstName, LastName);
+        }
     }
 
     public class Customer : Person

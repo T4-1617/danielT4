@@ -16,7 +16,7 @@ namespace _160920CarRental2
         System.Collections.ArrayList People;
         bool[] UsedIDs;
         int RandomID;
-        int EmployeeID = 0;
+        int EmployeeID = 3;
         bool looper = true;
 
         public Form1()
@@ -25,20 +25,55 @@ namespace _160920CarRental2
             UsedIDs = new bool[10000];
             InitializeComponent();
 
-            RandomID = rnd.Next(1, 10000);
-            People.Add(new Customer() { FirstName = "Bertil", LastName = "Håkansson", PhoneNumber = "070123456", CustomerID = RandomID });
+            RandomID = rnd.Next(1, 4999);
+            People.Add(new Customer()
+            {
+                FirstName = "Bertil",
+                LastName = "Håkansson",
+                PhoneNumber = "070123456",
+                CustomerID = RandomID
+            });
 
-            RandomID = rnd.Next(1, 10000);
-            People.Add(new Customer() { FirstName = "Emilia", LastName = "Andersson", PhoneNumber = "070654321", CustomerID = RandomID });
+            RandomID = rnd.Next(5000, 10000);
+            People.Add(new Customer()
+            {
+                FirstName = "Emilia",
+                LastName = "Andersson",
+                PhoneNumber = "070654321",
+                CustomerID = RandomID
+            });
 
-            People.Add(new Employee() { FirstName = "Johan", LastName = "Almgren", EmployeeID = 0001, Title = "idk",PhoneNumber = "123456789", Wage = 10 });
-            People.Add(new Employee() { FirstName = "Albin", LastName = "Carlgren", EmployeeID = 0002, Title = "vene", PhoneNumber = "987654321", Wage = 5000 });
+            People.Add(new Employee()
+            {
+                FirstName = "Johan",
+                LastName = "Almgren",
+                EmployeeID = 0001,
+                Title = "idk",
+                PhoneNumber = "123456789",
+                Wage = 10
+            });
 
-            People.Add(new Supplier { FirstName = "Lars", LastName = "Brandt", PhoneNumber = "123123123", Company = "Frakt o Slakt AB" });
+            People.Add(new Employee()
+            {
+                FirstName = "Albin",
+                LastName = "Carlgren",
+                EmployeeID = 0002,
+                Title = "vene",
+                PhoneNumber = "987654321",
+                Wage = 5000
+            });
+
+            People.Add(new Supplier
+            {
+                FirstName = "Lars",
+                LastName = "Brandt",
+                PhoneNumber = "123123123",
+                Company = "Frakt o Slakt AB"
+            });
 
             foreach (Person item in People)
             {
-                lbxPeople.Items.Add(item.FullName);
+                lbxPeople.Items.Add(item);
             }
         }
 
@@ -59,10 +94,10 @@ namespace _160920CarRental2
                         {
                             if (UsedIDs[RandomID] == false)
                             {
-                                People.Add(new Customer { FirstName = txbFirstName.Text, LastName = txbLastName.Text, CustomerID = RandomID, PhoneNumber = txbPhoneNumber.Text});
+                                People.Add(new Customer { FirstName = txbFirstName.Text, LastName = txbLastName.Text, CustomerID = RandomID, PhoneNumber = txbPhoneNumber.Text });
                                 UsedIDs[RandomID] = true;
                                 looper = false;
-                            } 
+                            }
                         }
 
                         break;
@@ -85,34 +120,13 @@ namespace _160920CarRental2
 
                 foreach (Person item in People)
                 {
-                    lbxPeople.Items.Add(item.FullName);
+                    lbxPeople.Items.Add(item);
                 }
             }
 
         }
 
         private void cbxPeopleList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch(cbxPeopleList.SelectedIndex)
-            {
-                case 1:
-                    pnlEmployee.Visible = true;
-                    pnlSupplier.Visible = false;
-                    break;
-
-                case 2:
-                    pnlEmployee.Visible = false;
-                    pnlSupplier.Visible = true;
-                    break;
-
-                default:
-                    pnlEmployee.Visible = false;
-                    pnlSupplier.Visible = false;
-                    break;
-            }
-        }
-
-        private void lbxPeople_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (cbxPeopleList.SelectedIndex)
             {
@@ -133,6 +147,52 @@ namespace _160920CarRental2
             }
         }
 
+        private void lbxPeople_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Person person = (Person)lbxPeople.SelectedItem;
+
+            pnlEdit.Visible = true;
+            txbFirstNameEdit.Text = person.FirstName.ToString();
+            txbLastNameEdit.Text = person.LastName.ToString();
+            txbPhoneNumberEdit.Text = person.PhoneNumber.ToString();
+
+            switch (lbxPeople.SelectedItem.GetType().Name)
+            {
+                case "Customer":
+                    Customer c = (Customer)lbxPeople.SelectedItem;
+                    txbCustomerIDEdit.Text = c.CustomerID.ToString();
+
+                    pnlEmployeeEdit.Visible = false;
+                    pnlSupplierEdit.Visible = false;
+                    pnlCustomerEdit.Visible = true;
+                    break;
+
+                case "Employee":
+                    Employee emp = (Employee)lbxPeople.SelectedItem;
+                    txbEmployeeIDEdit.Text = emp.EmployeeID.ToString();
+                    txbTitleEdit.Text = emp.Title.ToString();
+                    txbWageEdit.Text = emp.Wage.ToString();
+
+                    pnlEmployeeEdit.Visible = true;
+                    pnlSupplierEdit.Visible = false;
+                    pnlCustomerEdit.Visible = false;
+                    break;
+
+                case "Supplier":
+                    Supplier supp = (Supplier)lbxPeople.SelectedItem;
+                    txbCompanyEdit.Text = supp.Company.ToString();
+
+                    pnlEmployeeEdit.Visible = false;
+                    pnlSupplierEdit.Visible = true;
+                    pnlCustomerEdit.Visible = false;
+                    break;
+
+                default:
+                    pnlEdit.Visible = false;
+                    break;
+            }
+        }
+
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -143,6 +203,42 @@ namespace _160920CarRental2
             pnlEmployee.Visible = false;
             pnlSupplier.Visible = false;
             cbxPeopleList.SelectedIndex = -1;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (lbxPeople.SelectedIndex >= 0)
+            {
+                Person person = (Person)lbxPeople.SelectedItem;
+                //Customer c = (Customer)lbxPeople.SelectedItem;
+
+                person.FirstName = txbFirstNameEdit.Text;
+                person.LastName = txbLastNameEdit.Text;
+                person.PhoneNumber = txbPhoneNumberEdit.Text;
+
+                switch (lbxPeople.SelectedItem.GetType().Name)
+                {
+                    case "Employee":
+                        Employee emp = (Employee)lbxPeople.SelectedItem;
+                        emp.Title = txbTitleEdit.Text;
+                        emp.Wage = int.Parse(txbWageEdit.Text);
+                        break;
+
+                    case "Supplier":
+                        Supplier supp = (Supplier)lbxPeople.SelectedItem;
+                        supp.Company = txbCompanyEdit.Text;
+                        break;
+
+                    default:
+                        break;
+                }
+                lbxPeople.Items.Clear();
+                foreach (Person item in People)
+                {
+                    lbxPeople.Items.Add(item);
+                }
+            }
+
         }
     }
 }

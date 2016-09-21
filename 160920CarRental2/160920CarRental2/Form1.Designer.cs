@@ -69,11 +69,15 @@
             this.btnCancelEdit = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.pnlEdit = new System.Windows.Forms.Panel();
+            this.pnlCustomerEdit = new System.Windows.Forms.Panel();
+            this.lblCustomerIDEdit = new System.Windows.Forms.Label();
+            this.txbCustomerIDEdit = new System.Windows.Forms.TextBox();
             this.pnlEmployee.SuspendLayout();
             this.pnlSupplier.SuspendLayout();
             this.pnlSupplierEdit.SuspendLayout();
             this.pnlEmployeeEdit.SuspendLayout();
             this.pnlEdit.SuspendLayout();
+            this.pnlCustomerEdit.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlEmployee
@@ -133,6 +137,7 @@
             // 
             // txbEmployeeID
             // 
+            this.txbEmployeeID.Enabled = false;
             this.txbEmployeeID.Location = new System.Drawing.Point(99, 0);
             this.txbEmployeeID.Name = "txbEmployeeID";
             this.txbEmployeeID.Size = new System.Drawing.Size(100, 20);
@@ -404,6 +409,7 @@
             // 
             // txbEmployeeIDEdit
             // 
+            this.txbEmployeeIDEdit.Enabled = false;
             this.txbEmployeeIDEdit.Location = new System.Drawing.Point(99, 0);
             this.txbEmployeeIDEdit.Name = "txbEmployeeIDEdit";
             this.txbEmployeeIDEdit.Size = new System.Drawing.Size(100, 20);
@@ -426,9 +432,11 @@
             this.btnEdit.TabIndex = 20;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // pnlEdit
             // 
+            this.pnlEdit.Controls.Add(this.pnlCustomerEdit);
             this.pnlEdit.Controls.Add(this.pnlSupplierEdit);
             this.pnlEdit.Controls.Add(this.btnCancelEdit);
             this.pnlEdit.Controls.Add(this.pnlEmployeeEdit);
@@ -441,15 +449,42 @@
             this.pnlEdit.Controls.Add(this.lblFirstNameEdit);
             this.pnlEdit.Location = new System.Drawing.Point(167, 248);
             this.pnlEdit.Name = "pnlEdit";
-            this.pnlEdit.Size = new System.Drawing.Size(459, 186);
+            this.pnlEdit.Size = new System.Drawing.Size(732, 186);
             this.pnlEdit.TabIndex = 22;
             this.pnlEdit.Visible = false;
+            // 
+            // pnlCustomerEdit
+            // 
+            this.pnlCustomerEdit.Controls.Add(this.lblCustomerIDEdit);
+            this.pnlCustomerEdit.Controls.Add(this.txbCustomerIDEdit);
+            this.pnlCustomerEdit.Location = new System.Drawing.Point(460, 83);
+            this.pnlCustomerEdit.Name = "pnlCustomerEdit";
+            this.pnlCustomerEdit.Size = new System.Drawing.Size(221, 75);
+            this.pnlCustomerEdit.TabIndex = 17;
+            this.pnlCustomerEdit.Visible = false;
+            // 
+            // lblCustomerIDEdit
+            // 
+            this.lblCustomerIDEdit.AutoSize = true;
+            this.lblCustomerIDEdit.Location = new System.Drawing.Point(0, 3);
+            this.lblCustomerIDEdit.Name = "lblCustomerIDEdit";
+            this.lblCustomerIDEdit.Size = new System.Drawing.Size(68, 13);
+            this.lblCustomerIDEdit.TabIndex = 16;
+            this.lblCustomerIDEdit.Text = "Customer ID:";
+            // 
+            // txbCustomerIDEdit
+            // 
+            this.txbCustomerIDEdit.Enabled = false;
+            this.txbCustomerIDEdit.Location = new System.Drawing.Point(99, 0);
+            this.txbCustomerIDEdit.Name = "txbCustomerIDEdit";
+            this.txbCustomerIDEdit.Size = new System.Drawing.Size(100, 20);
+            this.txbCustomerIDEdit.TabIndex = 15;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 444);
+            this.ClientSize = new System.Drawing.Size(911, 444);
             this.Controls.Add(this.pnlEdit);
             this.Controls.Add(this.lblPhoneNumber);
             this.Controls.Add(this.lblLastName);
@@ -477,6 +512,8 @@
             this.pnlEmployeeEdit.PerformLayout();
             this.pnlEdit.ResumeLayout(false);
             this.pnlEdit.PerformLayout();
+            this.pnlCustomerEdit.ResumeLayout(false);
+            this.pnlCustomerEdit.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -525,6 +562,9 @@
         private System.Windows.Forms.Button btnCancelEdit;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Panel pnlEdit;
+        private System.Windows.Forms.Panel pnlCustomerEdit;
+        private System.Windows.Forms.Label lblCustomerIDEdit;
+        private System.Windows.Forms.TextBox txbCustomerIDEdit;
     }
 }
 
