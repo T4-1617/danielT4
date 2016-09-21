@@ -24,12 +24,13 @@ namespace _160920CarRental2
 
         public Form1()
         {
-            People = new System.Collections.ArrayList();
-            UsedIDs = new bool[10000];
+            People = new System.Collections.ArrayList();//Creates an ArrayList that stores People.
+            UsedIDs = new bool[1000];//Creates false bools to keep track of used IDs.
             InitializeComponent();
 
-            RandomID = rnd.Next(1, 4999);
-            People.Add(new Customer()
+            RandomID = rnd.Next(1, 499);//Generates a random number between 1 and 499.
+
+            People.Add(new Customer()//Adds a customer to the ArrayList "People".
             {
                 FirstName = "Bertil",
                 LastName = "Håkansson",
@@ -37,8 +38,8 @@ namespace _160920CarRental2
                 CustomerID = RandomID
             });
 
-            RandomID = rnd.Next(5000, 10000);
-            People.Add(new Customer()
+            RandomID = rnd.Next(500, 1000);//Generates a random number between 500 and 1000.
+            People.Add(new Customer()//Adds a customer to the ArrayList "People".
             {
                 FirstName = "Emilia",
                 LastName = "Andersson",
@@ -46,7 +47,7 @@ namespace _160920CarRental2
                 CustomerID = RandomID
             });
 
-            People.Add(new Employee()
+            People.Add(new Employee()//Adds an employee to the ArrayList "People".
             {
                 FirstName = "Johan",
                 LastName = "Almgren",
@@ -56,7 +57,7 @@ namespace _160920CarRental2
                 Wage = "10"
             });
 
-            People.Add(new Employee()
+            People.Add(new Employee()//Adds an employee to the ArrayList "People".
             {
                 FirstName = "Albin",
                 LastName = "Carlgren",
@@ -66,20 +67,19 @@ namespace _160920CarRental2
                 Wage = "5000"
             });
 
-            People.Add(new Supplier
+            People.Add(new Supplier()//Adds a supplier to the ArrayList "People".
             {
                 FirstName = "Lars",
                 LastName = "Brandt",
                 PhoneNumber = "123123123",
                 Company = "Frakt o Slakt AB"
             });
-
             ListPeople();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            RandomID = rnd.Next(10, 10000);
+            //Forces the user to enter a First Name and a Last Name.
             if (txbFirstName.Text == "" || txbLastName.Text == "")
             {
                 MessageBox.Show("You need to enter a First Name and a Last Name.");
@@ -87,11 +87,16 @@ namespace _160920CarRental2
 
             else
             {
+                looper = true;
                 switch (cbxPeopleList.SelectedIndex)
                 {
-                    case 0:
-                        while (looper)
+
+                    case 0://Adds a customer
+                        RandomID = rnd.Next(10, 1000);
+                        while (looper)//Makes sure the same ID isn't assigned more than once.
                         {
+                            RandomID = rnd.Next(10, 1000);
+
                             if (UsedIDs[RandomID] == false)
                             {
                                 People.Add(new Customer { FirstName = txbFirstName.Text, LastName = txbLastName.Text, CustomerID = RandomID, PhoneNumber = txbPhoneNumber.Text });
@@ -99,46 +104,49 @@ namespace _160920CarRental2
                                 looper = false;
                             }
                         }
-
                         break;
 
-                    case 1:
+                    case 1://Adds an employee
                         People.Add(new Employee { FirstName = txbFirstName.Text, LastName = txbLastName.Text, EmployeeID = EmployeeID, PhoneNumber = txbPhoneNumber.Text, Title = txbTitle.Text, Wage = txbWageEdit.Text });
                         EmployeeID++;
                         break;
 
-                    case 2:
+                    case 2://Adds a supplier
                         People.Add(new Supplier { FirstName = txbFirstName.Text, LastName = txbLastName.Text, Company = txbCompany.Text, PhoneNumber = txbPhoneNumber.Text });
                         break;
 
                     default:
+                        //If none of the options in the dropdown list is selected this message will be displayed.
                         MessageBox.Show("You need to select something to register from the list.");
                         break;
                 }
-                lbxPeople.Items.Clear();
-                looper = true;
+                lbxPeople.Items.Clear();//Clears the listbox.
                 ListPeople();
+                ClearTextBoxes();
             }
         }
 
         private void cbxPeopleList_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            //Displays the correct panel based on what type of person is selected.
             switch (cbxPeopleList.SelectedIndex)
             {
                 case 1:
                     pnlEmployee.Visible = true;
                     pnlSupplier.Visible = false;
+                    pnlAdd.Visible = true;
                     break;
 
                 case 2:
                     pnlEmployee.Visible = false;
                     pnlSupplier.Visible = true;
+                    pnlAdd.Visible = true;
                     break;
 
                 default:
                     pnlEmployee.Visible = false;
                     pnlSupplier.Visible = false;
+                    pnlAdd.Visible = true;
                     break;
             }
         }
@@ -151,16 +159,17 @@ namespace _160920CarRental2
                 pnlEdit.Visible = false;
                 return;
             }
-            Person person = (Person)lbxPeople.SelectedItem;
-
             pnlEdit.Visible = true;
+
+            //Sets the values of "person" to the input in corresponding textbox.
+            Person person = (Person)lbxPeople.SelectedItem;
             txbFirstNameEdit.Text = person.FirstName.ToString();
             txbLastNameEdit.Text = person.LastName.ToString();
             txbPhoneNumberEdit.Text = person.PhoneNumber.ToString();
 
-            switch (lbxPeople.SelectedItem.GetType().Name)
+            switch (lbxPeople.SelectedItem.GetType().Name)//Checks what type of person is selected.
             {
-                case "Customer":
+                case "Customer"://Sets the values of "c" to the input in corresponding textbox.
                     Customer c = (Customer)lbxPeople.SelectedItem;
                     txbCustomerIDEdit.Text = c.CustomerID.ToString();
 
@@ -169,7 +178,7 @@ namespace _160920CarRental2
                     pnlCustomerEdit.Visible = true;
                     break;
 
-                case "Employee":
+                case "Employee"://Sets the values of "emp" to the input in corresponding textbox.
                     Employee emp = (Employee)lbxPeople.SelectedItem;
                     txbEmployeeIDEdit.Text = emp.EmployeeID.ToString();
                     txbTitleEdit.Text = emp.Title.ToString();
@@ -180,7 +189,7 @@ namespace _160920CarRental2
                     pnlCustomerEdit.Visible = false;
                     break;
 
-                case "Supplier":
+                case "Supplier"://Sets the values of "supp" to the input in corresponding textbox.
                     Supplier supp = (Supplier)lbxPeople.SelectedItem;
                     txbCompanyEdit.Text = supp.Company.ToString();
 
@@ -189,67 +198,51 @@ namespace _160920CarRental2
                     pnlCustomerEdit.Visible = false;
                     break;
 
-                default:
+                default://If a person is not selected the edit panel will be hidden.
                     pnlEdit.Visible = false;
                     break;
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            pnlEmployee.Visible = false;
-            pnlSupplier.Visible = false;
-            cbxPeopleList.SelectedIndex = -1;
+            ClearTextBoxes();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (lbxPeople.SelectedIndex >= 0)
+            //Sets the values of "person" to the input in corresponding textbox.
+            Person person = (Person)lbxPeople.SelectedItem;
+            person.FirstName = txbFirstNameEdit.Text;
+            person.LastName = txbLastNameEdit.Text;
+            person.PhoneNumber = txbPhoneNumberEdit.Text;
+
+            switch (lbxPeople.SelectedItem.GetType().Name)//Checks what type of person is selected
             {
-                Person person = (Person)lbxPeople.SelectedItem;
-                //Customer c = (Customer)lbxPeople.SelectedItem;
+                case "Employee"://Sets the values of "emp" to the input in corresponding textbox.
+                    Employee emp = (Employee)lbxPeople.SelectedItem;
+                    emp.Title = txbTitleEdit.Text;
+                    emp.Wage = txbWageEdit.Text;
+                    break;
 
-                person.FirstName = txbFirstNameEdit.Text;
-                person.LastName = txbLastNameEdit.Text;
-                person.PhoneNumber = txbPhoneNumberEdit.Text;
+                case "Supplier"://Sets the values of "supp" to the input in corresponding textbox.
+                    Supplier supp = (Supplier)lbxPeople.SelectedItem;
+                    supp.Company = txbCompanyEdit.Text;
+                    break;
 
-                switch (lbxPeople.SelectedItem.GetType().Name)
-                {
-                    case "Employee":
-                        Employee emp = (Employee)lbxPeople.SelectedItem;
-                        emp.Title = txbTitleEdit.Text;
-                        emp.Wage = txbWageEdit.Text;
-                        break;
-
-                    case "Supplier":
-                        Supplier supp = (Supplier)lbxPeople.SelectedItem;
-                        supp.Company = txbCompanyEdit.Text;
-                        break;
-
-                    default:
-                        break;
-                }
-                lbxPeople.Items.Clear();
-                
-                foreach (Person item in People)
-                {
-                    lbxPeople.Items.Add(item);
-                }
+                default:
+                    break;
             }
-
+            lbxPeople.Items.Clear();//Clears the listbox.
+            ListPeople();
         }
         
         private void btnCancelEdit_Click(object sender, EventArgs e)
         {
-            pnlEdit.Visible = false;
+            pnlEdit.Visible = false;//Hides the edit panel.
         }
 
-        void ListPeople()
+        public void ListPeople()//Prints an organized list of people in lbxPeople.
         {
             CountCustomers = 0;
             CountEmployees = 0;
@@ -292,5 +285,14 @@ namespace _160920CarRental2
             lblPeopleCounter.Text = string.Format("There are {0} people listed. {1} Customers, {2} Employees, {3} Suppliers.", People.Count, CountCustomers, CountEmployees, CountSuppliers);
         }
 
+        public void ClearTextBoxes()//Clears all textboxes in the add section.
+        {
+            txbFirstName.Text = string.Empty;
+            txbLastName.Text = string.Empty;
+            txbPhoneNumber.Text = string.Empty;
+            txbTitle.Text = string.Empty;
+            txbWage.Text = string.Empty;
+            txbCompany.Text = string.Empty;
+        }        
     }
 }

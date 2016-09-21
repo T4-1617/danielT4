@@ -32,9 +32,7 @@
             this.lblWage = new System.Windows.Forms.Label();
             this.txbWage = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.lblEmployeeID = new System.Windows.Forms.Label();
             this.txbTitle = new System.Windows.Forms.TextBox();
-            this.txbEmployeeID = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lbxPeople = new System.Windows.Forms.ListBox();
@@ -54,6 +52,9 @@
             this.lblLastNameEdit = new System.Windows.Forms.Label();
             this.lblFirstNameEdit = new System.Windows.Forms.Label();
             this.pnlSupplierEdit = new System.Windows.Forms.Panel();
+            this.pnlCustomerEdit = new System.Windows.Forms.Panel();
+            this.lblCustomerIDEdit = new System.Windows.Forms.Label();
+            this.txbCustomerIDEdit = new System.Windows.Forms.TextBox();
             this.lblCompanyEdit = new System.Windows.Forms.Label();
             this.txbCompanyEdit = new System.Windows.Forms.TextBox();
             this.txbPhoneNumberEdit = new System.Windows.Forms.TextBox();
@@ -69,15 +70,14 @@
             this.btnCancelEdit = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.pnlEdit = new System.Windows.Forms.Panel();
-            this.pnlCustomerEdit = new System.Windows.Forms.Panel();
-            this.lblCustomerIDEdit = new System.Windows.Forms.Label();
-            this.txbCustomerIDEdit = new System.Windows.Forms.TextBox();
+            this.pnlAdd = new System.Windows.Forms.Panel();
             this.pnlEmployee.SuspendLayout();
             this.pnlSupplier.SuspendLayout();
             this.pnlSupplierEdit.SuspendLayout();
+            this.pnlCustomerEdit.SuspendLayout();
             this.pnlEmployeeEdit.SuspendLayout();
             this.pnlEdit.SuspendLayout();
-            this.pnlCustomerEdit.SuspendLayout();
+            this.pnlAdd.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlEmployee
@@ -85,19 +85,17 @@
             this.pnlEmployee.Controls.Add(this.lblWage);
             this.pnlEmployee.Controls.Add(this.txbWage);
             this.pnlEmployee.Controls.Add(this.lblTitle);
-            this.pnlEmployee.Controls.Add(this.lblEmployeeID);
             this.pnlEmployee.Controls.Add(this.txbTitle);
-            this.pnlEmployee.Controls.Add(this.txbEmployeeID);
-            this.pnlEmployee.Location = new System.Drawing.Point(12, 117);
+            this.pnlEmployee.Location = new System.Drawing.Point(4, 82);
             this.pnlEmployee.Name = "pnlEmployee";
-            this.pnlEmployee.Size = new System.Drawing.Size(221, 75);
+            this.pnlEmployee.Size = new System.Drawing.Size(221, 58);
             this.pnlEmployee.TabIndex = 1;
             this.pnlEmployee.Visible = false;
             // 
             // lblWage
             // 
             this.lblWage.AutoSize = true;
-            this.lblWage.Location = new System.Drawing.Point(0, 55);
+            this.lblWage.Location = new System.Drawing.Point(0, 32);
             this.lblWage.Name = "lblWage";
             this.lblWage.Size = new System.Drawing.Size(39, 13);
             this.lblWage.TabIndex = 16;
@@ -105,7 +103,7 @@
             // 
             // txbWage
             // 
-            this.txbWage.Location = new System.Drawing.Point(99, 52);
+            this.txbWage.Location = new System.Drawing.Point(99, 29);
             this.txbWage.Name = "txbWage";
             this.txbWage.Size = new System.Drawing.Size(100, 20);
             this.txbWage.TabIndex = 7;
@@ -113,39 +111,22 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(0, 29);
+            this.lblTitle.Location = new System.Drawing.Point(0, 3);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(30, 13);
             this.lblTitle.TabIndex = 14;
             this.lblTitle.Text = "Title:";
             // 
-            // lblEmployeeID
-            // 
-            this.lblEmployeeID.AutoSize = true;
-            this.lblEmployeeID.Location = new System.Drawing.Point(0, 3);
-            this.lblEmployeeID.Name = "lblEmployeeID";
-            this.lblEmployeeID.Size = new System.Drawing.Size(70, 13);
-            this.lblEmployeeID.TabIndex = 12;
-            this.lblEmployeeID.Text = "Employee ID:";
-            // 
             // txbTitle
             // 
-            this.txbTitle.Location = new System.Drawing.Point(99, 26);
+            this.txbTitle.Location = new System.Drawing.Point(99, 0);
             this.txbTitle.Name = "txbTitle";
             this.txbTitle.Size = new System.Drawing.Size(100, 20);
             this.txbTitle.TabIndex = 6;
             // 
-            // txbEmployeeID
-            // 
-            this.txbEmployeeID.Enabled = false;
-            this.txbEmployeeID.Location = new System.Drawing.Point(99, 0);
-            this.txbEmployeeID.Name = "txbEmployeeID";
-            this.txbEmployeeID.Size = new System.Drawing.Size(100, 20);
-            this.txbEmployeeID.TabIndex = 5;
-            // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(111, 198);
+            this.btnCancel.Location = new System.Drawing.Point(100, 146);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 23);
             this.btnCancel.TabIndex = 9;
@@ -155,7 +136,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(15, 198);
+            this.btnAdd.Location = new System.Drawing.Point(4, 146);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(90, 23);
             this.btnAdd.TabIndex = 8;
@@ -166,7 +147,7 @@
             // lbxPeople
             // 
             this.lbxPeople.FormattingEnabled = true;
-            this.lbxPeople.Location = new System.Drawing.Point(12, 248);
+            this.lbxPeople.Location = new System.Drawing.Point(12, 237);
             this.lbxPeople.Name = "lbxPeople";
             this.lbxPeople.Size = new System.Drawing.Size(149, 186);
             this.lbxPeople.TabIndex = 10;
@@ -174,6 +155,7 @@
             // 
             // cbxPeopleList
             // 
+            this.cbxPeopleList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxPeopleList.FormattingEnabled = true;
             this.cbxPeopleList.Items.AddRange(new object[] {
             "Customer",
@@ -181,7 +163,7 @@
             "Supplier"});
             this.cbxPeopleList.Location = new System.Drawing.Point(146, 12);
             this.cbxPeopleList.Name = "cbxPeopleList";
-            this.cbxPeopleList.Size = new System.Drawing.Size(207, 21);
+            this.cbxPeopleList.Size = new System.Drawing.Size(129, 21);
             this.cbxPeopleList.TabIndex = 0;
             this.cbxPeopleList.SelectedIndexChanged += new System.EventHandler(this.cbxPeopleList_SelectedIndexChanged);
             // 
@@ -197,7 +179,7 @@
             // lblPeopleCounter
             // 
             this.lblPeopleCounter.AutoSize = true;
-            this.lblPeopleCounter.Location = new System.Drawing.Point(9, 228);
+            this.lblPeopleCounter.Location = new System.Drawing.Point(9, 217);
             this.lblPeopleCounter.Name = "lblPeopleCounter";
             this.lblPeopleCounter.Size = new System.Drawing.Size(12, 13);
             this.lblPeopleCounter.TabIndex = 2;
@@ -205,21 +187,21 @@
             // 
             // txbFirstName
             // 
-            this.txbFirstName.Location = new System.Drawing.Point(111, 39);
+            this.txbFirstName.Location = new System.Drawing.Point(103, 4);
             this.txbFirstName.Name = "txbFirstName";
             this.txbFirstName.Size = new System.Drawing.Size(100, 20);
             this.txbFirstName.TabIndex = 1;
             // 
             // txbLastName
             // 
-            this.txbLastName.Location = new System.Drawing.Point(111, 65);
+            this.txbLastName.Location = new System.Drawing.Point(103, 30);
             this.txbLastName.Name = "txbLastName";
             this.txbLastName.Size = new System.Drawing.Size(100, 20);
             this.txbLastName.TabIndex = 2;
             // 
             // txbPhoneNumber
             // 
-            this.txbPhoneNumber.Location = new System.Drawing.Point(111, 91);
+            this.txbPhoneNumber.Location = new System.Drawing.Point(103, 56);
             this.txbPhoneNumber.Name = "txbPhoneNumber";
             this.txbPhoneNumber.Size = new System.Drawing.Size(100, 20);
             this.txbPhoneNumber.TabIndex = 3;
@@ -228,9 +210,9 @@
             // 
             this.pnlSupplier.Controls.Add(this.lblCompany);
             this.pnlSupplier.Controls.Add(this.txbCompany);
-            this.pnlSupplier.Location = new System.Drawing.Point(239, 117);
+            this.pnlSupplier.Location = new System.Drawing.Point(4, 82);
             this.pnlSupplier.Name = "pnlSupplier";
-            this.pnlSupplier.Size = new System.Drawing.Size(221, 75);
+            this.pnlSupplier.Size = new System.Drawing.Size(221, 58);
             this.pnlSupplier.TabIndex = 2;
             this.pnlSupplier.Visible = false;
             // 
@@ -253,25 +235,25 @@
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(12, 42);
+            this.lblFirstName.Location = new System.Drawing.Point(4, 7);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(60, 13);
+            this.lblFirstName.Size = new System.Drawing.Size(64, 13);
             this.lblFirstName.TabIndex = 9;
-            this.lblFirstName.Text = "First Name:";
+            this.lblFirstName.Text = "*First Name:";
             // 
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
-            this.lblLastName.Location = new System.Drawing.Point(12, 68);
+            this.lblLastName.Location = new System.Drawing.Point(4, 33);
             this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(61, 13);
+            this.lblLastName.Size = new System.Drawing.Size(65, 13);
             this.lblLastName.TabIndex = 10;
-            this.lblLastName.Text = "Last Name:";
+            this.lblLastName.Text = "*Last Name:";
             // 
             // lblPhoneNumber
             // 
             this.lblPhoneNumber.AutoSize = true;
-            this.lblPhoneNumber.Location = new System.Drawing.Point(12, 94);
+            this.lblPhoneNumber.Location = new System.Drawing.Point(4, 59);
             this.lblPhoneNumber.Name = "lblPhoneNumber";
             this.lblPhoneNumber.Size = new System.Drawing.Size(81, 13);
             this.lblPhoneNumber.TabIndex = 11;
@@ -294,7 +276,6 @@
             this.lblLastNameEdit.Size = new System.Drawing.Size(61, 13);
             this.lblLastNameEdit.TabIndex = 18;
             this.lblLastNameEdit.Text = "Last Name:";
-            this.lblLastNameEdit.Click += new System.EventHandler(this.label2_Click);
             // 
             // lblFirstNameEdit
             // 
@@ -309,11 +290,38 @@
             // 
             this.pnlSupplierEdit.Controls.Add(this.lblCompanyEdit);
             this.pnlSupplierEdit.Controls.Add(this.txbCompanyEdit);
-            this.pnlSupplierEdit.Location = new System.Drawing.Point(233, 83);
+            this.pnlSupplierEdit.Location = new System.Drawing.Point(6, 83);
             this.pnlSupplierEdit.Name = "pnlSupplierEdit";
             this.pnlSupplierEdit.Size = new System.Drawing.Size(221, 75);
             this.pnlSupplierEdit.TabIndex = 14;
             this.pnlSupplierEdit.Visible = false;
+            // 
+            // pnlCustomerEdit
+            // 
+            this.pnlCustomerEdit.Controls.Add(this.lblCustomerIDEdit);
+            this.pnlCustomerEdit.Controls.Add(this.txbCustomerIDEdit);
+            this.pnlCustomerEdit.Location = new System.Drawing.Point(6, 83);
+            this.pnlCustomerEdit.Name = "pnlCustomerEdit";
+            this.pnlCustomerEdit.Size = new System.Drawing.Size(221, 75);
+            this.pnlCustomerEdit.TabIndex = 17;
+            this.pnlCustomerEdit.Visible = false;
+            // 
+            // lblCustomerIDEdit
+            // 
+            this.lblCustomerIDEdit.AutoSize = true;
+            this.lblCustomerIDEdit.Location = new System.Drawing.Point(0, 3);
+            this.lblCustomerIDEdit.Name = "lblCustomerIDEdit";
+            this.lblCustomerIDEdit.Size = new System.Drawing.Size(68, 13);
+            this.lblCustomerIDEdit.TabIndex = 16;
+            this.lblCustomerIDEdit.Text = "Customer ID:";
+            // 
+            // txbCustomerIDEdit
+            // 
+            this.txbCustomerIDEdit.Enabled = false;
+            this.txbCustomerIDEdit.Location = new System.Drawing.Point(99, 0);
+            this.txbCustomerIDEdit.Name = "txbCustomerIDEdit";
+            this.txbCustomerIDEdit.Size = new System.Drawing.Size(100, 20);
+            this.txbCustomerIDEdit.TabIndex = 15;
             // 
             // lblCompanyEdit
             // 
@@ -431,15 +439,16 @@
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(90, 23);
             this.btnEdit.TabIndex = 19;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "Save changes";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // pnlEdit
             // 
+            this.pnlEdit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlEdit.Controls.Add(this.pnlCustomerEdit);
-            this.pnlEdit.Controls.Add(this.pnlSupplierEdit);
             this.pnlEdit.Controls.Add(this.btnCancelEdit);
+            this.pnlEdit.Controls.Add(this.pnlSupplierEdit);
             this.pnlEdit.Controls.Add(this.pnlEmployeeEdit);
             this.pnlEdit.Controls.Add(this.btnEdit);
             this.pnlEdit.Controls.Add(this.txbFirstNameEdit);
@@ -448,59 +457,41 @@
             this.pnlEdit.Controls.Add(this.lblLastNameEdit);
             this.pnlEdit.Controls.Add(this.txbPhoneNumberEdit);
             this.pnlEdit.Controls.Add(this.lblFirstNameEdit);
-            this.pnlEdit.Location = new System.Drawing.Point(167, 248);
+            this.pnlEdit.Location = new System.Drawing.Point(167, 237);
             this.pnlEdit.Name = "pnlEdit";
-            this.pnlEdit.Size = new System.Drawing.Size(732, 186);
+            this.pnlEdit.Size = new System.Drawing.Size(227, 186);
             this.pnlEdit.TabIndex = 22;
             this.pnlEdit.Visible = false;
             // 
-            // pnlCustomerEdit
+            // pnlAdd
             // 
-            this.pnlCustomerEdit.Controls.Add(this.lblCustomerIDEdit);
-            this.pnlCustomerEdit.Controls.Add(this.txbCustomerIDEdit);
-            this.pnlCustomerEdit.Location = new System.Drawing.Point(460, 83);
-            this.pnlCustomerEdit.Name = "pnlCustomerEdit";
-            this.pnlCustomerEdit.Size = new System.Drawing.Size(221, 75);
-            this.pnlCustomerEdit.TabIndex = 17;
-            this.pnlCustomerEdit.Visible = false;
-            // 
-            // lblCustomerIDEdit
-            // 
-            this.lblCustomerIDEdit.AutoSize = true;
-            this.lblCustomerIDEdit.Location = new System.Drawing.Point(0, 3);
-            this.lblCustomerIDEdit.Name = "lblCustomerIDEdit";
-            this.lblCustomerIDEdit.Size = new System.Drawing.Size(68, 13);
-            this.lblCustomerIDEdit.TabIndex = 16;
-            this.lblCustomerIDEdit.Text = "Customer ID:";
-            // 
-            // txbCustomerIDEdit
-            // 
-            this.txbCustomerIDEdit.Enabled = false;
-            this.txbCustomerIDEdit.Location = new System.Drawing.Point(99, 0);
-            this.txbCustomerIDEdit.Name = "txbCustomerIDEdit";
-            this.txbCustomerIDEdit.Size = new System.Drawing.Size(100, 20);
-            this.txbCustomerIDEdit.TabIndex = 15;
+            this.pnlAdd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlAdd.Controls.Add(this.pnlSupplier);
+            this.pnlAdd.Controls.Add(this.pnlEmployee);
+            this.pnlAdd.Controls.Add(this.lblPhoneNumber);
+            this.pnlAdd.Controls.Add(this.btnAdd);
+            this.pnlAdd.Controls.Add(this.lblLastName);
+            this.pnlAdd.Controls.Add(this.btnCancel);
+            this.pnlAdd.Controls.Add(this.lblFirstName);
+            this.pnlAdd.Controls.Add(this.txbFirstName);
+            this.pnlAdd.Controls.Add(this.txbLastName);
+            this.pnlAdd.Controls.Add(this.txbPhoneNumber);
+            this.pnlAdd.Location = new System.Drawing.Point(12, 39);
+            this.pnlAdd.Name = "pnlAdd";
+            this.pnlAdd.Size = new System.Drawing.Size(263, 173);
+            this.pnlAdd.TabIndex = 23;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(911, 444);
+            this.Controls.Add(this.pnlAdd);
             this.Controls.Add(this.pnlEdit);
-            this.Controls.Add(this.lblPhoneNumber);
-            this.Controls.Add(this.lblLastName);
-            this.Controls.Add(this.lblFirstName);
-            this.Controls.Add(this.pnlSupplier);
-            this.Controls.Add(this.txbPhoneNumber);
-            this.Controls.Add(this.txbLastName);
-            this.Controls.Add(this.txbFirstName);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.cbxPeopleList);
             this.Controls.Add(this.lbxPeople);
             this.Controls.Add(this.lblPeopleCounter);
-            this.Controls.Add(this.pnlEmployee);
             this.Name = "Form1";
             this.Text = "Form1";
             this.pnlEmployee.ResumeLayout(false);
@@ -509,12 +500,14 @@
             this.pnlSupplier.PerformLayout();
             this.pnlSupplierEdit.ResumeLayout(false);
             this.pnlSupplierEdit.PerformLayout();
+            this.pnlCustomerEdit.ResumeLayout(false);
+            this.pnlCustomerEdit.PerformLayout();
             this.pnlEmployeeEdit.ResumeLayout(false);
             this.pnlEmployeeEdit.PerformLayout();
             this.pnlEdit.ResumeLayout(false);
             this.pnlEdit.PerformLayout();
-            this.pnlCustomerEdit.ResumeLayout(false);
-            this.pnlCustomerEdit.PerformLayout();
+            this.pnlAdd.ResumeLayout(false);
+            this.pnlAdd.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -532,9 +525,7 @@
         private System.Windows.Forms.Label lblWage;
         private System.Windows.Forms.TextBox txbWage;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label lblEmployeeID;
         private System.Windows.Forms.TextBox txbTitle;
-        private System.Windows.Forms.TextBox txbEmployeeID;
         private System.Windows.Forms.TextBox txbFirstName;
         private System.Windows.Forms.TextBox txbLastName;
         private System.Windows.Forms.TextBox txbPhoneNumber;
@@ -566,6 +557,7 @@
         private System.Windows.Forms.Panel pnlCustomerEdit;
         private System.Windows.Forms.Label lblCustomerIDEdit;
         private System.Windows.Forms.TextBox txbCustomerIDEdit;
+        private System.Windows.Forms.Panel pnlAdd;
     }
 }
 
