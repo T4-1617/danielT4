@@ -108,7 +108,7 @@
             this.txbWage.Location = new System.Drawing.Point(99, 52);
             this.txbWage.Name = "txbWage";
             this.txbWage.Size = new System.Drawing.Size(100, 20);
-            this.txbWage.TabIndex = 15;
+            this.txbWage.TabIndex = 7;
             // 
             // lblTitle
             // 
@@ -133,7 +133,7 @@
             this.txbTitle.Location = new System.Drawing.Point(99, 26);
             this.txbTitle.Name = "txbTitle";
             this.txbTitle.Size = new System.Drawing.Size(100, 20);
-            this.txbTitle.TabIndex = 13;
+            this.txbTitle.TabIndex = 6;
             // 
             // txbEmployeeID
             // 
@@ -141,14 +141,14 @@
             this.txbEmployeeID.Location = new System.Drawing.Point(99, 0);
             this.txbEmployeeID.Name = "txbEmployeeID";
             this.txbEmployeeID.Size = new System.Drawing.Size(100, 20);
-            this.txbEmployeeID.TabIndex = 12;
+            this.txbEmployeeID.TabIndex = 5;
             // 
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(111, 198);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 23);
-            this.btnCancel.TabIndex = 6;
+            this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -158,7 +158,7 @@
             this.btnAdd.Location = new System.Drawing.Point(15, 198);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(90, 23);
-            this.btnAdd.TabIndex = 5;
+            this.btnAdd.TabIndex = 8;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -169,7 +169,7 @@
             this.lbxPeople.Location = new System.Drawing.Point(12, 248);
             this.lbxPeople.Name = "lbxPeople";
             this.lbxPeople.Size = new System.Drawing.Size(149, 186);
-            this.lbxPeople.TabIndex = 3;
+            this.lbxPeople.TabIndex = 10;
             this.lbxPeople.SelectedIndexChanged += new System.EventHandler(this.lbxPeople_SelectedIndexChanged);
             // 
             // cbxPeopleList
@@ -182,7 +182,7 @@
             this.cbxPeopleList.Location = new System.Drawing.Point(146, 12);
             this.cbxPeopleList.Name = "cbxPeopleList";
             this.cbxPeopleList.Size = new System.Drawing.Size(207, 21);
-            this.cbxPeopleList.TabIndex = 5;
+            this.cbxPeopleList.TabIndex = 0;
             this.cbxPeopleList.SelectedIndexChanged += new System.EventHandler(this.cbxPeopleList_SelectedIndexChanged);
             // 
             // label3
@@ -208,21 +208,21 @@
             this.txbFirstName.Location = new System.Drawing.Point(111, 39);
             this.txbFirstName.Name = "txbFirstName";
             this.txbFirstName.Size = new System.Drawing.Size(100, 20);
-            this.txbFirstName.TabIndex = 0;
+            this.txbFirstName.TabIndex = 1;
             // 
             // txbLastName
             // 
             this.txbLastName.Location = new System.Drawing.Point(111, 65);
             this.txbLastName.Name = "txbLastName";
             this.txbLastName.Size = new System.Drawing.Size(100, 20);
-            this.txbLastName.TabIndex = 7;
+            this.txbLastName.TabIndex = 2;
             // 
             // txbPhoneNumber
             // 
             this.txbPhoneNumber.Location = new System.Drawing.Point(111, 91);
             this.txbPhoneNumber.Name = "txbPhoneNumber";
             this.txbPhoneNumber.Size = new System.Drawing.Size(100, 20);
-            this.txbPhoneNumber.TabIndex = 8;
+            this.txbPhoneNumber.TabIndex = 3;
             // 
             // pnlSupplier
             // 
@@ -248,7 +248,7 @@
             this.txbCompany.Location = new System.Drawing.Point(99, 0);
             this.txbCompany.Name = "txbCompany";
             this.txbCompany.Size = new System.Drawing.Size(100, 20);
-            this.txbCompany.TabIndex = 15;
+            this.txbCompany.TabIndex = 4;
             // 
             // lblFirstName
             // 
@@ -329,28 +329,28 @@
             this.txbCompanyEdit.Location = new System.Drawing.Point(99, 0);
             this.txbCompanyEdit.Name = "txbCompanyEdit";
             this.txbCompanyEdit.Size = new System.Drawing.Size(100, 20);
-            this.txbCompanyEdit.TabIndex = 15;
+            this.txbCompanyEdit.TabIndex = 14;
             // 
             // txbPhoneNumberEdit
             // 
             this.txbPhoneNumberEdit.Location = new System.Drawing.Point(105, 57);
             this.txbPhoneNumberEdit.Name = "txbPhoneNumberEdit";
             this.txbPhoneNumberEdit.Size = new System.Drawing.Size(100, 20);
-            this.txbPhoneNumberEdit.TabIndex = 16;
+            this.txbPhoneNumberEdit.TabIndex = 13;
             // 
             // txbLastNameEdit
             // 
             this.txbLastNameEdit.Location = new System.Drawing.Point(105, 31);
             this.txbLastNameEdit.Name = "txbLastNameEdit";
             this.txbLastNameEdit.Size = new System.Drawing.Size(100, 20);
-            this.txbLastNameEdit.TabIndex = 15;
+            this.txbLastNameEdit.TabIndex = 12;
             // 
             // txbFirstNameEdit
             // 
             this.txbFirstNameEdit.Location = new System.Drawing.Point(105, 5);
             this.txbFirstNameEdit.Name = "txbFirstNameEdit";
             this.txbFirstNameEdit.Size = new System.Drawing.Size(100, 20);
-            this.txbFirstNameEdit.TabIndex = 12;
+            this.txbFirstNameEdit.TabIndex = 11;
             // 
             // pnlEmployeeEdit
             // 
@@ -380,7 +380,7 @@
             this.txbWageEdit.Location = new System.Drawing.Point(99, 52);
             this.txbWageEdit.Name = "txbWageEdit";
             this.txbWageEdit.Size = new System.Drawing.Size(100, 20);
-            this.txbWageEdit.TabIndex = 15;
+            this.txbWageEdit.TabIndex = 18;
             // 
             // lblTitleEdit
             // 
@@ -405,7 +405,7 @@
             this.txbTitleEdit.Location = new System.Drawing.Point(99, 26);
             this.txbTitleEdit.Name = "txbTitleEdit";
             this.txbTitleEdit.Size = new System.Drawing.Size(100, 20);
-            this.txbTitleEdit.TabIndex = 13;
+            this.txbTitleEdit.TabIndex = 17;
             // 
             // txbEmployeeIDEdit
             // 
@@ -413,23 +413,24 @@
             this.txbEmployeeIDEdit.Location = new System.Drawing.Point(99, 0);
             this.txbEmployeeIDEdit.Name = "txbEmployeeIDEdit";
             this.txbEmployeeIDEdit.Size = new System.Drawing.Size(100, 20);
-            this.txbEmployeeIDEdit.TabIndex = 12;
+            this.txbEmployeeIDEdit.TabIndex = 16;
             // 
             // btnCancelEdit
             // 
             this.btnCancelEdit.Location = new System.Drawing.Point(102, 160);
             this.btnCancelEdit.Name = "btnCancelEdit";
             this.btnCancelEdit.Size = new System.Drawing.Size(90, 23);
-            this.btnCancelEdit.TabIndex = 21;
+            this.btnCancelEdit.TabIndex = 20;
             this.btnCancelEdit.Text = "Cancel";
             this.btnCancelEdit.UseVisualStyleBackColor = true;
+            this.btnCancelEdit.Click += new System.EventHandler(this.btnCancelEdit_Click);
             // 
             // btnEdit
             // 
             this.btnEdit.Location = new System.Drawing.Point(6, 160);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(90, 23);
-            this.btnEdit.TabIndex = 20;
+            this.btnEdit.TabIndex = 19;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);

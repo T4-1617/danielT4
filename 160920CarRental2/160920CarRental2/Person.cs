@@ -35,7 +35,7 @@ namespace _160920CarRental2
     {
         public int EmployeeID { get; set; }
         public string Title { get; set; }
-        public decimal Wage { get; set; }
+        public string Wage { get; set; }
     }
 
     public class Supplier : Person

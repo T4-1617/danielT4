@@ -17,6 +17,9 @@ namespace _160920CarRental2
         bool[] UsedIDs;
         int RandomID;
         int EmployeeID = 3;
+        int CountCustomers;
+        int CountEmployees;
+        int CountSuppliers;
         bool looper = true;
 
         public Form1()
@@ -50,7 +53,7 @@ namespace _160920CarRental2
                 EmployeeID = 0001,
                 Title = "idk",
                 PhoneNumber = "123456789",
-                Wage = 10
+                Wage = "10"
             });
 
             People.Add(new Employee()
@@ -60,7 +63,7 @@ namespace _160920CarRental2
                 EmployeeID = 0002,
                 Title = "vene",
                 PhoneNumber = "987654321",
-                Wage = 5000
+                Wage = "5000"
             });
 
             People.Add(new Supplier
@@ -71,10 +74,7 @@ namespace _160920CarRental2
                 Company = "Frakt o Slakt AB"
             });
 
-            foreach (Person item in People)
-            {
-                lbxPeople.Items.Add(item);
-            }
+            ListPeople();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -103,7 +103,7 @@ namespace _160920CarRental2
                         break;
 
                     case 1:
-                        People.Add(new Employee { FirstName = txbFirstName.Text, LastName = txbLastName.Text, EmployeeID = EmployeeID, PhoneNumber = txbPhoneNumber.Text, Title = txbTitle.Text, Wage = int.Parse(txbWage.Text) });
+                        People.Add(new Employee { FirstName = txbFirstName.Text, LastName = txbLastName.Text, EmployeeID = EmployeeID, PhoneNumber = txbPhoneNumber.Text, Title = txbTitle.Text, Wage = txbWageEdit.Text });
                         EmployeeID++;
                         break;
 
@@ -117,17 +117,13 @@ namespace _160920CarRental2
                 }
                 lbxPeople.Items.Clear();
                 looper = true;
-
-                foreach (Person item in People)
-                {
-                    lbxPeople.Items.Add(item);
-                }
+                ListPeople();
             }
-
         }
 
         private void cbxPeopleList_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             switch (cbxPeopleList.SelectedIndex)
             {
                 case 1:
@@ -149,6 +145,12 @@ namespace _160920CarRental2
 
         private void lbxPeople_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Cannot edit a string
+            if (lbxPeople.SelectedItem is string)
+            {
+                pnlEdit.Visible = false;
+                return;
+            }
             Person person = (Person)lbxPeople.SelectedItem;
 
             pnlEdit.Visible = true;
@@ -221,7 +223,7 @@ namespace _160920CarRental2
                     case "Employee":
                         Employee emp = (Employee)lbxPeople.SelectedItem;
                         emp.Title = txbTitleEdit.Text;
-                        emp.Wage = int.Parse(txbWageEdit.Text);
+                        emp.Wage = txbWageEdit.Text;
                         break;
 
                     case "Supplier":
@@ -233,6 +235,7 @@ namespace _160920CarRental2
                         break;
                 }
                 lbxPeople.Items.Clear();
+                
                 foreach (Person item in People)
                 {
                     lbxPeople.Items.Add(item);
@@ -240,5 +243,54 @@ namespace _160920CarRental2
             }
 
         }
+        
+        private void btnCancelEdit_Click(object sender, EventArgs e)
+        {
+            pnlEdit.Visible = false;
+        }
+
+        void ListPeople()
+        {
+            CountCustomers = 0;
+            CountEmployees = 0;
+            CountSuppliers = 0;
+
+            lbxPeople.Items.Add("Customers:");
+
+            foreach (Person item in People)
+            {
+                if (item is Customer)
+                {
+                    lbxPeople.Items.Add(item);
+                    CountCustomers++;
+                }
+            }
+
+            lbxPeople.Items.Add(string.Empty);
+            lbxPeople.Items.Add("\nEmployees:");
+
+            foreach (Person item in People)
+            {
+                if (item is Employee)
+                {
+                    lbxPeople.Items.Add(item);
+                    CountEmployees++;
+                }
+            }
+
+            lbxPeople.Items.Add(string.Empty);
+            lbxPeople.Items.Add("Suppliers:");
+
+            foreach (Person item in People)
+            {
+                if (item is Supplier)
+                {
+                    lbxPeople.Items.Add(item);
+                    CountSuppliers++;
+                }
+            }
+            lblPeopleCounter.Text = string.Format("There are {0} people listed. {1} Customers, {2} Employees, {3} Suppliers.", People.Count, CountCustomers, CountEmployees, CountSuppliers);
+        }
+
     }
 }
