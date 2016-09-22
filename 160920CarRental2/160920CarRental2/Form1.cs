@@ -17,7 +17,7 @@ namespace _160920CarRental2
         bool[] UsedIDs;
         int RandomID;
         int EmployeeID = 3;
-        int CountCustomers;
+        int CountCustomers=0;
         int CountEmployees;
         int CountSuppliers;
         bool looper = true;
@@ -92,7 +92,6 @@ namespace _160920CarRental2
                 {
 
                     case 0://Adds a customer
-                        RandomID = rnd.Next(10, 1000);
                         while (looper)//Makes sure the same ID isn't assigned more than once.
                         {
                             RandomID = rnd.Next(10, 1000);
@@ -101,6 +100,7 @@ namespace _160920CarRental2
                             {
                                 People.Add(new Customer { FirstName = txbFirstName.Text, LastName = txbLastName.Text, CustomerID = RandomID, PhoneNumber = txbPhoneNumber.Text });
                                 UsedIDs[RandomID] = true;
+                                CountCustomers++;
                                 looper = false;
                             }
                         }
@@ -109,10 +109,12 @@ namespace _160920CarRental2
                     case 1://Adds an employee
                         People.Add(new Employee { FirstName = txbFirstName.Text, LastName = txbLastName.Text, EmployeeID = EmployeeID, PhoneNumber = txbPhoneNumber.Text, Title = txbTitle.Text, Wage = txbWageEdit.Text });
                         EmployeeID++;
+                        CountEmployees++;
                         break;
 
                     case 2://Adds a supplier
                         People.Add(new Supplier { FirstName = txbFirstName.Text, LastName = txbLastName.Text, Company = txbCompany.Text, PhoneNumber = txbPhoneNumber.Text });
+                        CountSuppliers++;
                         break;
 
                     default:
@@ -131,22 +133,19 @@ namespace _160920CarRental2
             //Displays the correct panel based on what type of person is selected.
             switch (cbxPeopleList.SelectedIndex)
             {
+                case 0:
+                    TogglePanels(false, false);
+                    break;
+
                 case 1:
-                    pnlEmployee.Visible = true;
-                    pnlSupplier.Visible = false;
-                    pnlAdd.Visible = true;
+                    TogglePanels(true, false);
                     break;
 
                 case 2:
-                    pnlEmployee.Visible = false;
-                    pnlSupplier.Visible = true;
-                    pnlAdd.Visible = true;
+                    TogglePanels(false, true);
                     break;
 
                 default:
-                    pnlEmployee.Visible = false;
-                    pnlSupplier.Visible = false;
-                    pnlAdd.Visible = true;
                     break;
             }
         }
@@ -154,7 +153,7 @@ namespace _160920CarRental2
         private void lbxPeople_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Cannot edit a string
-            if (lbxPeople.SelectedItem is string)
+            if (lbxPeople.SelectedItem is string || lbxPeople.SelectedItem == null)
             {
                 pnlEdit.Visible = false;
                 return;
@@ -170,32 +169,23 @@ namespace _160920CarRental2
             switch (lbxPeople.SelectedItem.GetType().Name)//Checks what type of person is selected.
             {
                 case "Customer"://Sets the values of "c" to the input in corresponding textbox.
-                    Customer c = (Customer)lbxPeople.SelectedItem;
+                    Customer c = (Customer)person;
                     txbCustomerIDEdit.Text = c.CustomerID.ToString();
-
-                    pnlEmployeeEdit.Visible = false;
-                    pnlSupplierEdit.Visible = false;
-                    pnlCustomerEdit.Visible = true;
+                    ToggleEditPanels(false, false, true);
                     break;
 
                 case "Employee"://Sets the values of "emp" to the input in corresponding textbox.
-                    Employee emp = (Employee)lbxPeople.SelectedItem;
+                    Employee emp = (Employee)person;
                     txbEmployeeIDEdit.Text = emp.EmployeeID.ToString();
                     txbTitleEdit.Text = emp.Title.ToString();
                     txbWageEdit.Text = emp.Wage.ToString();
-
-                    pnlEmployeeEdit.Visible = true;
-                    pnlSupplierEdit.Visible = false;
-                    pnlCustomerEdit.Visible = false;
+                    ToggleEditPanels(true, false, false);
                     break;
 
                 case "Supplier"://Sets the values of "supp" to the input in corresponding textbox.
-                    Supplier supp = (Supplier)lbxPeople.SelectedItem;
+                    Supplier supp = (Supplier)person;
                     txbCompanyEdit.Text = supp.Company.ToString();
-
-                    pnlEmployeeEdit.Visible = false;
-                    pnlSupplierEdit.Visible = true;
-                    pnlCustomerEdit.Visible = false;
+                    ToggleEditPanels(false, true, false);
                     break;
 
                 default://If a person is not selected the edit panel will be hidden.
@@ -220,13 +210,13 @@ namespace _160920CarRental2
             switch (lbxPeople.SelectedItem.GetType().Name)//Checks what type of person is selected
             {
                 case "Employee"://Sets the values of "emp" to the input in corresponding textbox.
-                    Employee emp = (Employee)lbxPeople.SelectedItem;
+                    Employee emp = (Employee)person;
                     emp.Title = txbTitleEdit.Text;
                     emp.Wage = txbWageEdit.Text;
                     break;
 
                 case "Supplier"://Sets the values of "supp" to the input in corresponding textbox.
-                    Supplier supp = (Supplier)lbxPeople.SelectedItem;
+                    Supplier supp = (Supplier)person;
                     supp.Company = txbCompanyEdit.Text;
                     break;
 
@@ -244,10 +234,6 @@ namespace _160920CarRental2
 
         public void ListPeople()//Prints an organized list of people in lbxPeople.
         {
-            CountCustomers = 0;
-            CountEmployees = 0;
-            CountSuppliers = 0;
-
             lbxPeople.Items.Add("Customers:");
 
             foreach (Person item in People)
@@ -255,7 +241,6 @@ namespace _160920CarRental2
                 if (item is Customer)
                 {
                     lbxPeople.Items.Add(item);
-                    CountCustomers++;
                 }
             }
 
@@ -267,7 +252,6 @@ namespace _160920CarRental2
                 if (item is Employee)
                 {
                     lbxPeople.Items.Add(item);
-                    CountEmployees++;
                 }
             }
 
@@ -279,7 +263,6 @@ namespace _160920CarRental2
                 if (item is Supplier)
                 {
                     lbxPeople.Items.Add(item);
-                    CountSuppliers++;
                 }
             }
             lblPeopleCounter.Text = string.Format("There are {0} people listed. {1} Customers, {2} Employees, {3} Suppliers.", People.Count, CountCustomers, CountEmployees, CountSuppliers);
@@ -293,6 +276,19 @@ namespace _160920CarRental2
             txbTitle.Text = string.Empty;
             txbWage.Text = string.Empty;
             txbCompany.Text = string.Empty;
-        }        
+        }
+
+        private void TogglePanels(bool ToggleEmployeePanel, bool ToggleSupplierPanel)
+        {
+            pnlEmployee.Visible = ToggleEmployeePanel;
+            pnlSupplier.Visible = ToggleSupplierPanel;
+        }
+
+        private void ToggleEditPanels(bool ToggleCustomerEditPanel, bool ToggleEmployeeEditPanel, bool ToggleSupplierEditPanel)
+        {
+            pnlCustomerEdit.Visible = ToggleCustomerEditPanel;
+            pnlEmployeeEdit.Visible = ToggleEmployeeEditPanel;
+            pnlSupplierEdit.Visible = ToggleSupplierEditPanel;
+        }
     }
 }

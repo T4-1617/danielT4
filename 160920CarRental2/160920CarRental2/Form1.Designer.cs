@@ -52,11 +52,11 @@
             this.lblLastNameEdit = new System.Windows.Forms.Label();
             this.lblFirstNameEdit = new System.Windows.Forms.Label();
             this.pnlSupplierEdit = new System.Windows.Forms.Panel();
+            this.lblCompanyEdit = new System.Windows.Forms.Label();
+            this.txbCompanyEdit = new System.Windows.Forms.TextBox();
             this.pnlCustomerEdit = new System.Windows.Forms.Panel();
             this.lblCustomerIDEdit = new System.Windows.Forms.Label();
             this.txbCustomerIDEdit = new System.Windows.Forms.TextBox();
-            this.lblCompanyEdit = new System.Windows.Forms.Label();
-            this.txbCompanyEdit = new System.Windows.Forms.TextBox();
             this.txbPhoneNumberEdit = new System.Windows.Forms.TextBox();
             this.txbLastNameEdit = new System.Windows.Forms.TextBox();
             this.txbFirstNameEdit = new System.Windows.Forms.TextBox();
@@ -296,6 +296,22 @@
             this.pnlSupplierEdit.TabIndex = 14;
             this.pnlSupplierEdit.Visible = false;
             // 
+            // lblCompanyEdit
+            // 
+            this.lblCompanyEdit.AutoSize = true;
+            this.lblCompanyEdit.Location = new System.Drawing.Point(0, 3);
+            this.lblCompanyEdit.Name = "lblCompanyEdit";
+            this.lblCompanyEdit.Size = new System.Drawing.Size(54, 13);
+            this.lblCompanyEdit.TabIndex = 16;
+            this.lblCompanyEdit.Text = "Company:";
+            // 
+            // txbCompanyEdit
+            // 
+            this.txbCompanyEdit.Location = new System.Drawing.Point(99, 0);
+            this.txbCompanyEdit.Name = "txbCompanyEdit";
+            this.txbCompanyEdit.Size = new System.Drawing.Size(100, 20);
+            this.txbCompanyEdit.TabIndex = 14;
+            // 
             // pnlCustomerEdit
             // 
             this.pnlCustomerEdit.Controls.Add(this.lblCustomerIDEdit);
@@ -322,22 +338,6 @@
             this.txbCustomerIDEdit.Name = "txbCustomerIDEdit";
             this.txbCustomerIDEdit.Size = new System.Drawing.Size(100, 20);
             this.txbCustomerIDEdit.TabIndex = 15;
-            // 
-            // lblCompanyEdit
-            // 
-            this.lblCompanyEdit.AutoSize = true;
-            this.lblCompanyEdit.Location = new System.Drawing.Point(0, 3);
-            this.lblCompanyEdit.Name = "lblCompanyEdit";
-            this.lblCompanyEdit.Size = new System.Drawing.Size(54, 13);
-            this.lblCompanyEdit.TabIndex = 16;
-            this.lblCompanyEdit.Text = "Company:";
-            // 
-            // txbCompanyEdit
-            // 
-            this.txbCompanyEdit.Location = new System.Drawing.Point(99, 0);
-            this.txbCompanyEdit.Name = "txbCompanyEdit";
-            this.txbCompanyEdit.Size = new System.Drawing.Size(100, 20);
-            this.txbCompanyEdit.TabIndex = 14;
             // 
             // txbPhoneNumberEdit
             // 
