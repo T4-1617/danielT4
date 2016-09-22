@@ -14,5 +14,6 @@ namespace _160922OnlineBanking
 
     public class Account : Customer {
         public long Balance { get; set; }
+        System.Collections.ArrayList Transactions = new System.Collections.ArrayList();
     }
 }
