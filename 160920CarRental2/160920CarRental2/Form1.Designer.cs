@@ -480,6 +480,7 @@
             this.pnlAdd.Name = "pnlAdd";
             this.pnlAdd.Size = new System.Drawing.Size(263, 173);
             this.pnlAdd.TabIndex = 23;
+            this.pnlAdd.Visible = false;
             // 
             // Form1
             // 

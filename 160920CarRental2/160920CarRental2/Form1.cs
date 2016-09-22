@@ -17,9 +17,9 @@ namespace _160920CarRental2
         bool[] UsedIDs;
         int RandomID;
         int EmployeeID = 3;
-        int CountCustomers=0;
-        int CountEmployees;
-        int CountSuppliers;
+        int CountCustomers = 2;
+        int CountEmployees = 2;
+        int CountSuppliers = 1;
         bool looper = true;
 
         public Form1()
@@ -130,6 +130,7 @@ namespace _160920CarRental2
 
         private void cbxPeopleList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            pnlAdd.Visible = true;
             //Displays the correct panel based on what type of person is selected.
             switch (cbxPeopleList.SelectedIndex)
             {
@@ -171,7 +172,7 @@ namespace _160920CarRental2
                 case "Customer"://Sets the values of "c" to the input in corresponding textbox.
                     Customer c = (Customer)person;
                     txbCustomerIDEdit.Text = c.CustomerID.ToString();
-                    ToggleEditPanels(false, false, true);
+                    ToggleEditPanels(true, false, false);
                     break;
 
                 case "Employee"://Sets the values of "emp" to the input in corresponding textbox.
@@ -179,13 +180,13 @@ namespace _160920CarRental2
                     txbEmployeeIDEdit.Text = emp.EmployeeID.ToString();
                     txbTitleEdit.Text = emp.Title.ToString();
                     txbWageEdit.Text = emp.Wage.ToString();
-                    ToggleEditPanels(true, false, false);
+                    ToggleEditPanels(false, true, false);
                     break;
 
                 case "Supplier"://Sets the values of "supp" to the input in corresponding textbox.
                     Supplier supp = (Supplier)person;
                     txbCompanyEdit.Text = supp.Company.ToString();
-                    ToggleEditPanels(false, true, false);
+                    ToggleEditPanels(false, false, true);
                     break;
 
                 default://If a person is not selected the edit panel will be hidden.
