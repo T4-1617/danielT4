@@ -30,6 +30,7 @@ aside{
     background: rgba( 255, 255, 255, 0.7);
     border-right: 2px solid rgba( 0, 0, 0, 0.2);
     position: relative;
+    float: left;
 }
 
 aside:hover{
@@ -74,4 +75,18 @@ a{
 #Main{
     width: 100%;
     height: auto;
+}
+
+#AboutMe{
+    width: 50%;
+    float: right;
+    margin: 30px 25% 0 0;
+    background-color: rgba( 18, 18, 18, 0.3);
+    height: 200px;
+    overflow: auto;
+}
+
+#AboutMe p{
+    padding-left: 8px;
+    color: white;
 }
